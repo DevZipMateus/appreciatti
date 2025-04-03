@@ -20,8 +20,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
-				display: ['Playfair Display', 'serif'],
+				sans: ['Fiona', 'Inter', 'sans-serif'],
+				display: ['Fiona', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -132,7 +132,7 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'hero-pattern': 'linear-gradient(to right bottom, rgba(7, 33, 66, 0.8), rgba(44, 83, 131, 0.8))',
+				'hero-pattern': 'linear-gradient(to right bottom, rgba(23, 37, 84, 0.8), rgba(30, 58, 138, 0.8))',
 				'service-gradient': 'linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%)',
 			},
 			boxShadow: {

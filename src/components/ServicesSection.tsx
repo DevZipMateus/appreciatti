@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { FileText, PieChart, Building, Shield, FileCheck, BarChart } from 'lucide-react';
+import { Flame, Sparkles, Mountains, Moon, Sunrise, Wind } from 'lucide-react';
 
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -26,36 +26,36 @@ const ServicesSection = () => {
     };
   }, []);
   
-  const services = [
+  const collections = [
     {
-      icon: <Building className="h-12 w-12 text-primary" />,
-      title: "Abertura e Legalização de Empresas",
-      description: "Simplificamos todo o processo de criação da sua empresa, cuidando da burocracia para você iniciar suas atividades rapidamente."
+      icon: <Flame className="h-12 w-12 text-primary" />,
+      title: "Coleção Lume",
+      description: "Inspirada nos elementos do fogo, esta coleção traz velas com fragrâncias quentes e aconchegantes, perfeitas para momentos de introspecção."
     }, 
     {
-      icon: <FileText className="h-12 w-12 text-primary" />,
-      title: "Contabilidade Empresarial",
-      description: "Registro preciso de todas as operações fiscais e contábeis, garantindo conformidade com as exigências legais."
+      icon: <Mountains className="h-12 w-12 text-primary" />,
+      title: "Coleção Terra",
+      description: "Com notas amadeiradas e herbais, estas velas celebram a conexão com a natureza e são ideais para criar um ambiente acolhedor em seu lar."
     }, 
     {
-      icon: <PieChart className="h-12 w-12 text-primary" />,
-      title: "Gestão Fiscal e Tributária",
-      description: "Planejamento tributário estratégico para reduzir legalmente a carga de impostos e otimizar os recursos da sua empresa."
+      icon: <Wind className="h-12 w-12 text-primary" />,
+      title: "Coleção Brisa",
+      description: "Fragrâncias leves e refrescantes que evocam a pureza do ar, perfeitas para renovar energias e criar um ambiente leve e agradável."
     }, 
     {
-      icon: <Shield className="h-12 w-12 text-primary" />,
-      title: "Consultoria Tributária",
-      description: "Orientação especializada para tomadas de decisão estratégicas, maximizando resultados e minimizando riscos."
+      icon: <Moon className="h-12 w-12 text-primary" />,
+      title: "Coleção Noite",
+      description: "Aromas envolventes e misteriosos que transformam suas noites em momentos especiais de relaxamento e desconexão do mundo exterior."
     }, 
     {
-      icon: <FileCheck className="h-12 w-12 text-primary" />,
-      title: "Departamento Pessoal",
-      description: "Gestão completa de folha de pagamento, admissões, demissões e toda a rotina trabalhista da sua empresa."
+      icon: <Sunrise className="h-12 w-12 text-primary" />,
+      title: "Coleção Aurora",
+      description: "Velas revitalizantes com notas cítricas e florais que despertam os sentidos e trazem energia renovada para iniciar seu dia."
     }, 
     {
-      icon: <BarChart className="h-12 w-12 text-primary" />,
-      title: "Gestão Financeira",
-      description: "Acompanhamento de indicadores financeiros, fluxo de caixa e análises gerenciais para decisões mais assertivas."
+      icon: <Sparkles className="h-12 w-12 text-primary" />,
+      title: "Coleção Essência",
+      description: "Nossa linha premium com fragrâncias exclusivas e embalagens diferenciadas, desenvolvida para momentos verdadeiramente especiais."
     }
   ];
   
@@ -64,50 +64,53 @@ const ServicesSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 animate-on-scroll">
-            Nossos Serviços
+            Nossas Coleções
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
-            Soluções Contábeis Completas
+            Descubra Suas Fragrâncias Favoritas
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll">
-            Oferecemos uma gama completa de serviços contábeis e financeiros para atender às necessidades 
-            específicas do seu negócio.
+            Oferecemos uma variedade de velas artesanais, cada uma com sua própria personalidade
+            e propósito para diferentes estados de espírito e momentos.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <ServiceCard 
+          {collections.map((collection, index) => (
+            <CollectionCard 
               key={index} 
-              icon={service.icon} 
-              title={service.title} 
-              description={service.description} 
+              icon={collection.icon} 
+              title={collection.title} 
+              description={collection.description} 
               index={index} 
             />
           ))}
         </div>
 
         <div className="mt-16 text-center animate-on-scroll">
-          
+          <Button className="quote-btn text-white rounded-md transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 mx-auto">
+            <Flame className="candle-flicker" size={18} />
+            Ver Todas as Coleções
+          </Button>
         </div>
       </div>
     </section>
   );
 };
 
-interface ServiceCardProps {
+interface CollectionCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
   index: number;
 }
 
-const ServiceCard = ({
+const CollectionCard = ({
   icon,
   title,
   description,
   index
-}: ServiceCardProps) => (
+}: CollectionCardProps) => (
   <Card className={`animate-on-scroll service-card border border-border/50 shadow-md overflow-hidden h-full [animation-delay:${index * 100}ms]`}>
     <CardContent className="p-8 flex flex-col items-center text-center h-full">
       <div className="mb-5 p-4 bg-primary/5 rounded-full">{icon}</div>

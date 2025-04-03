@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Phone, Mail, MapPin, Clock, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react';
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -29,21 +29,21 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: <Phone className="h-5 w-5 text-primary" />,
-      title: "Telefone",
-      details: "(11) 3456-7890",
-      link: "tel:+551134567890"
+      title: "Telefone/WhatsApp",
+      details: "(61) 99865-9605",
+      link: "tel:+5561998659605"
     },
     {
       icon: <Mail className="h-5 w-5 text-primary" />,
       title: "E-mail",
-      details: "contato@harmonicacontabil.com.br",
-      link: "mailto:contato@harmonicacontabil.com.br"
+      details: "suporte@appreciatti.com",
+      link: "mailto:suporte@appreciatti.com"
     },
     {
       icon: <MapPin className="h-5 w-5 text-primary" />,
       title: "Endereço",
-      details: "Av. Paulista, 1000, São Paulo - SP",
-      link: "https://maps.google.com"
+      details: "Quadra 204, Lote 8, Bloco B, Apto 904, Águas Claras, Brasília - DF",
+      link: "https://maps.google.com/?q=Quadra+204,+Lote+8,+Bloco+B,+Apto+904,+Águas+Claras,+Brasília+-+DF"
     },
     {
       icon: <Clock className="h-5 w-5 text-primary" />,
@@ -65,11 +65,11 @@ const ContactSection = () => {
             Entre em Contato
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
-            Estamos Prontos para Atender Você
+            Estamos à Disposição
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll">
-            Entre em contato conosco através de WhatsApp, telefone ou e-mail.
-            Nossa equipe está à disposição para oferecer o suporte que você precisa.
+            Entre em contato conosco para pedidos personalizados, dúvidas sobre nossos produtos ou
+            qualquer outra informação que desejar.
           </p>
         </div>
 
@@ -80,8 +80,8 @@ const ContactSection = () => {
                 <div>
                   <h3 className="text-2xl font-bold mb-6">Informações de Contato</h3>
                   <p className="text-muted-foreground mb-8">
-                    Para solicitar orçamentos, tirar dúvidas ou agendar uma consulta, 
-                    utilize um dos canais de atendimento abaixo. Respondemos com rapidez e eficiência.
+                    Para fazer um pedido, solicitar velas personalizadas ou tirar dúvidas,
+                    entre em contato por um dos canais abaixo.
                   </p>
                   
                   <div className="space-y-6 mb-8">
@@ -99,9 +99,11 @@ const ContactSection = () => {
                   <div>
                     <h4 className="text-lg font-medium mb-4">Siga-nos</h4>
                     <div className="flex space-x-3">
-                      <SocialLink icon={<Facebook size={20} />} href="#" label="Facebook" />
-                      <SocialLink icon={<Instagram size={20} />} href="#" label="Instagram" />
-                      <SocialLink icon={<Linkedin size={20} />} href="#" label="LinkedIn" />
+                      <SocialLink 
+                        icon={<Instagram size={20} />} 
+                        href="https://www.instagram.com/appreciatti" 
+                        label="Instagram" 
+                      />
                     </div>
                   </div>
                 </div>
@@ -114,9 +116,10 @@ const ContactSection = () => {
                         <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold mb-3">Prefere atendimento via WhatsApp?</h3>
+                    <h3 className="text-xl font-bold mb-3">Velas Personalizadas</h3>
                     <p className="text-muted-foreground mb-6">
-                      Clique no botão do WhatsApp no canto inferior direito da tela para iniciar uma conversa diretamente com nossa equipe de atendimento.
+                      Para pedidos de velas personalizadas para eventos, empresas ou coleções especiais,
+                      fale diretamente com nossa equipe pelo WhatsApp.
                     </p>
                     <div className="text-sm text-muted-foreground">
                       Tempo médio de resposta: <span className="font-medium text-foreground">15 minutos</span>
@@ -132,7 +135,7 @@ const ContactSection = () => {
           <Card className="border border-border/50 shadow-card overflow-hidden">
             <div className="h-[400px] w-full">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0976950243356!2d-46.6547919!3d-23.5651084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1627909542948!5m2!1spt-BR!2sbr"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.6018575551984!2d-48.03004826851022!3d-15.7825495776774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a2de4c5831b1f%3A0x4c38f58d6ab4318a!2s%C3%81guas%20Claras%2C%20Bras%C3%ADlia%20-%20DF!5e0!3m2!1spt-BR!2sbr!4v1627909542948!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -188,6 +191,8 @@ const SocialLink = ({ icon, href, label }: SocialLinkProps) => (
     href={href}
     className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
     aria-label={label}
+    target="_blank"
+    rel="noopener noreferrer"
   >
     {icon}
   </a>

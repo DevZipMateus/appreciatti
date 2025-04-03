@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Check, Target, Heart, Award } from 'lucide-react';
+import { Check, Heart, Sparkles, Leaf } from 'lucide-react';
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -34,11 +34,10 @@ const AboutSection = () => {
             Sobre Nós
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
-            Conhecimento e Experiência para o Sucesso do seu Negócio
+            Sofisticação, Aroma e Design em Harmonia
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll">
-            Mais que um escritório contábil, somos um parceiro estratégico comprometido com
-            o crescimento sustentável da sua empresa.
+            Mais do que velas, criamos experiências sensoriais completas para momentos especiais e rituais diários.
           </p>
         </div>
 
@@ -46,20 +45,19 @@ const AboutSection = () => {
           <div className="space-y-6">
             <div className="animate-on-scroll">
               <h3 className="text-2xl font-bold mb-4">
-                Conte com uma Contabilidade Harmônica
+                Descubra a Appreciatti
               </h3>
               <p className="text-muted-foreground mb-6">
-                Desde 2010, ajudamos empresas de todos os tamanhos a otimizar suas operações
-                financeiras e contábeis. Nossa abordagem combina expertise técnica com um
-                atendimento personalizado, garantindo que cada cliente receba soluções
-                adequadas às suas necessidades específicas.
+                A Appreciatti é uma marca de velas aromáticas que transforma momentos cotidianos em rituais de bem-estar. 
+                Com um design sofisticado e minimalista, nossas velas são inspiradas na conexão consigo mesmo, meditação e relaxamento. 
+                Criamos fragrâncias exclusivas para proporcionar imersão sensorial e equilíbrio, unindo estética refinada e propósito.
               </p>
               <ul className="space-y-3">
                 {[
-                  'Equipe multidisciplinar e altamente qualificada',
-                  'Processos contábeis simplificados e transparentes',
-                  'Tecnologia de ponta para gestão financeira eficiente',
-                  'Comunicação clara e atendimento personalizado'
+                  'Velas artesanais de alta qualidade e design único',
+                  'Fragrâncias exclusivas e duradouras',
+                  'Embalagens reutilizáveis e sustentáveis',
+                  'Experiências sensoriais completas com rituais e playlists'
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -72,24 +70,24 @@ const AboutSection = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <AboutCard 
-              icon={<Target className="h-10 w-10 text-primary" />}
-              title="Missão"
-              description="Oferecer serviços contábeis de excelência, proporcionando segurança e tranquilidade para que nossos clientes possam focar no crescimento de seus negócios."
-            />
-            <AboutCard 
               icon={<Heart className="h-10 w-10 text-primary" />}
-              title="Visão"
-              description="Ser reconhecida como referência em contabilidade consultiva no Brasil, criando relacionamentos duradouros baseados em confiança e resultados."
+              title="Sofisticação"
+              description="Coleções autorais inspiradas na conexão consigo mesmo, no relaxamento e na meditação. Design minimalista e elegante que complementa qualquer ambiente."
             />
             <AboutCard 
-              icon={<Award className="h-10 w-10 text-primary" />}
-              title="Valores"
-              description="Ética, transparência, compromisso com resultados, excelência técnica e inovação constante em nossos processos e serviços."
+              icon={<Sparkles className="h-10 w-10 text-primary" />}
+              title="Qualidade"
+              description="Utilizamos ceras premium, pavios ecológicos e fragrâncias cuidadosamente selecionadas para garantir uma queima limpa, prolongada e envolvente."
+            />
+            <AboutCard 
+              icon={<Leaf className="h-10 w-10 text-primary" />}
+              title="Sustentabilidade"
+              description="Comprometidos com práticas sustentáveis, buscamos materiais que respeitam o meio ambiente e incentivamos o reuso das embalagens."
             />
             <AboutCard 
               icon={<Check className="h-10 w-10 text-primary" />}
-              title="Diferenciais"
-              description="Atendimento personalizado, tecnologia de ponta, equipe especializada e processos transparentes para garantir sua satisfação."
+              title="Experiência"
+              description="Mais que um aroma, nossas velas proporcionam uma experiência sensorial completa, trazendo aconchego, equilíbrio e conexão para seus momentos."
             />
           </div>
         </div>

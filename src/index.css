@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -13,21 +14,27 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 20%;
     
-    --secondary: 215 30% 92%;
-    --secondary-foreground: 215 35% 25%;
-    --muted: 215 30% 92%;
-    --muted-foreground: 215 25% 40%;
-    
-    --primary: 175 65% 35%;
+    /* Azul escuro */
+    --primary: 220 70% 20%;
     --primary-foreground: 0 0% 100%;
-    --accent: 175 70% 40%;
+    
+    /* Off-white */
+    --secondary: 30 20% 96%;
+    --secondary-foreground: 220 70% 20%;
+    
+    /* Verde musgo */
+    --accent: 90 25% 35%;
     --accent-foreground: 0 0% 100%;
+    
+    /* Terra cota */
+    --muted: 15 40% 50%;
+    --muted-foreground: 215 25% 40%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 175 65% 35%;
+    --ring: 220 70% 20%;
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
@@ -39,6 +46,30 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 222 91.2% 59.8%;
   }
+}
+
+@font-face {
+  font-family: 'Fiona';
+  src: url('/fonts/fiona-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fiona';
+  src: url('/fonts/fiona-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fiona';
+  src: url('/fonts/fiona-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 @layer base {
@@ -264,5 +295,29 @@ html {
   
   .section-padding {
     @apply py-6;
+  }
+}
+
+/* Candle animation */
+.candle-flicker {
+  animation: flicker 3s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    opacity: 0.8;
+    transform: translateY(-1px) scale(1.05);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(1px) scale(0.95);
+  }
+  75% {
+    opacity: 0.8;
+    transform: translateY(-1px) scale(1.02);
   }
 }

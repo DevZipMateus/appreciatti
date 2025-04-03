@@ -5,28 +5,28 @@ import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    name: "Carlos Silva",
-    company: "Silva Tech Solutions",
+    name: "Mariana S.",
+    company: "Cliente",
     image: "/placeholder.svg",
-    text: "A Harmônica Contabilidade transformou completamente nossa gestão financeira. Além da excelência técnica, o atendimento personalizado nos deu confiança para tomar decisões estratégicas."
+    text: "Comprei a vela da Coleção Lume e fiquei encantada! O pote furtacor é simplesmente lindo e a fragrância preenche o ambiente. Simplesmente apaixonada!"
   },
   {
-    name: "Ana Oliveira",
-    company: "Boutique Elegance",
+    name: "Fernanda M.",
+    company: "Noiva",
     image: "/placeholder.svg",
-    text: "Desde que começamos a trabalhar com a Harmônica, nossa carga tributária reduziu significativamente. A equipe é extremamente proativa e sempre nos orienta sobre as melhores práticas fiscais."
+    text: "Fiz velas personalizadas para meu casamento e foi a melhor escolha! A Appreciatti criou um aroma exclusivo para o nosso dia, e os convidados ficaram encantados com o presente. O atendimento foi impecável, e cada vela tinha um toque especial. Recomendo de olhos fechados!"
   },
   {
-    name: "Roberto Mendes",
-    company: "Construmendes Ltda",
+    name: "Ricardo T.",
+    company: "Empresário",
     image: "/placeholder.svg",
-    text: "Os serviços contábeis da Harmônica são de altíssima qualidade. Trouxeram organização e tranquilidade para nossa empresa, além de identificarem oportunidades de economia que não enxergávamos."
+    text: "Precisava de um brinde corporativo diferenciado, e as velas personalizadas da Appreciatti superaram minhas expectativas! A embalagem e a fragrância escolhida transmitiram exatamente a identidade da minha marca. Fez sucesso entre os clientes!"
   },
   {
-    name: "Lúcia Ferreira",
-    company: "Café & Bistrô Aroma",
+    name: "Camila P.",
+    company: "Cliente",
     image: "/placeholder.svg",
-    text: "Como empreendedora, precisava de um parceiro contábil que entendesse os desafios de um pequeno negócio. A Harmônica superou todas as expectativas com seu atendimento humanizado."
+    text: "Sempre gostei de velas aromáticas, mas as da Appreciatti têm algo especial! Comprei a da Coleção Essência e agora faz parte do meu ritual diário."
   }
 ];
 
@@ -95,8 +95,8 @@ const TestimonialsSection = () => {
             O Que Nossos Clientes Dizem
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll">
-            Atendimento personalizado e resultados concretos são nossa marca registrada.
-            Veja o que nossos clientes têm a dizer sobre nossos serviços.
+            Histórias reais de pessoas que transformaram seus ambientes e momentos especiais 
+            com nossas velas aromáticas.
           </p>
         </div>
 
@@ -166,7 +166,7 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => (
         <Quote size={32} />
       </div>
       
-      <p className="text-foreground mb-6 flex-grow">{testimonial.text}</p>
+      <p className="text-foreground mb-6 flex-grow italic">{testimonial.text}</p>
       
       <div className="flex items-center">
         <div className="w-12 h-12 rounded-full overflow-hidden mr-4 bg-gray-200">
