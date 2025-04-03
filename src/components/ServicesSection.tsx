@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Flame, Sparkles, Mountains, Moon, Sunrise, Wind } from 'lucide-react';
+import { Flame, Sparkles, Mountain, Moon, Sunrise, Wind } from 'lucide-react';
 
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -33,7 +33,7 @@ const ServicesSection = () => {
       description: "Inspirada nos elementos do fogo, esta coleção traz velas com fragrâncias quentes e aconchegantes, perfeitas para momentos de introspecção."
     }, 
     {
-      icon: <Mountains className="h-12 w-12 text-primary" />,
+      icon: <Mountain className="h-12 w-12 text-primary" />,
       title: "Coleção Terra",
       description: "Com notas amadeiradas e herbais, estas velas celebram a conexão com a natureza e são ideais para criar um ambiente acolhedor em seu lar."
     }, 
