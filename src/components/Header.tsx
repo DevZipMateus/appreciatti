@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Flame } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 
@@ -49,15 +49,9 @@ const Header = () => {
                   <span className="sr-only">Abrir menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="top" className="pt-16 pb-8 px-6">
+              <SheetContent side="top" className="pt-16 pb-8 px-6 bg-primary text-[#eee]">
                 <nav className="flex flex-col items-center space-y-4 text-lg">
-                  <NavLinks mobile isScrolled={isScrolled} />
-                  <SheetClose asChild>
-                    <Button className="quote-btn mt-4 w-full text-[#eee] rounded-md transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 py-3 text-base">
-                      <Flame size={18} className="candle-flicker" />
-                      Comprar Agora
-                    </Button>
-                  </SheetClose>
+                  <NavLinks mobile isScrolled={false} />
                 </nav>
               </SheetContent>
             </Sheet>
@@ -98,7 +92,7 @@ const NavLinks = ({
   return <>
       {links.map(link => <a key={link.name} href={link.href} className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
             ${mobile 
-              ? `text-xl ${isScrolled ? 'text-foreground' : 'text-[#eee]'} hover:text-primary mb-2 w-full text-center py-3` 
+              ? `text-xl text-[#eee] hover:text-[#eee]/80 mb-2 w-full text-center py-3` 
               : isScrolled 
                 ? 'text-foreground/80 hover:text-primary hover:bg-secondary/50' 
                 : 'text-[#eee] hover:text-[#eee]/80 hover:bg-[#eee]/10'}`} 
