@@ -5,9 +5,7 @@ import { ChevronDown, Flame, Music } from 'lucide-react';
 import { 
   Carousel, 
   CarouselContent, 
-  CarouselItem, 
-  CarouselPrevious, 
-  CarouselNext 
+  CarouselItem
 } from '@/components/ui/carousel';
 
 const HeroSection = () => {
@@ -70,9 +68,9 @@ const HeroSection = () => {
           </div>
         </div>
         
-        {/* Carousel - Right Side - Now with larger images and no text overlay */}
+        {/* Carousel - Right Side - Auto-rotating images without navigation buttons */}
         <div className="relative h-full max-h-[80vh] overflow-hidden rounded-lg shadow-xl hidden md:block">
-          <Carousel className="w-full h-full" opts={{ loop: true, duration: 20 }}>
+          <Carousel className="w-full h-full" opts={{ loop: true, duration: 4000, align: "center", autoplay: true }}>
             <CarouselContent className="h-full">
               {slides.map((slide, index) => (
                 <CarouselItem key={index} className="h-full">
@@ -86,17 +84,12 @@ const HeroSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            
-            <div className="absolute inset-0 flex items-center justify-between p-4 z-20">
-              <CarouselPrevious className="relative left-0 translate-y-0 h-8 w-8 bg-white/20 hover:bg-white/40 border-none" />
-              <CarouselNext className="relative right-0 translate-y-0 h-8 w-8 bg-white/20 hover:bg-white/40 border-none" />
-            </div>
           </Carousel>
         </div>
 
-        {/* Mobile Image (only visible on mobile) - larger and no text overlay */}
+        {/* Mobile Image (only visible on mobile) - auto-rotating without navigation buttons */}
         <div className="md:hidden w-full h-80 rounded-lg overflow-hidden shadow-lg">
-          <Carousel className="w-full h-full" opts={{ loop: true }}>
+          <Carousel className="w-full h-full" opts={{ loop: true, duration: 4000, align: "center", autoplay: true }}>
             <CarouselContent className="h-full">
               {slides.map((slide, index) => (
                 <CarouselItem key={index} className="h-full">
@@ -108,11 +101,6 @@ const HeroSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            
-            <div className="absolute inset-0 flex items-center justify-between p-4 z-20">
-              <CarouselPrevious className="relative left-0 translate-y-0 h-8 w-8 bg-white/20 hover:bg-white/40 border-none" />
-              <CarouselNext className="relative right-0 translate-y-0 h-8 w-8 bg-white/20 hover:bg-white/40 border-none" />
-            </div>
           </Carousel>
         </div>
       </div>
