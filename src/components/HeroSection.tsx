@@ -1,5 +1,5 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Flame, Music } from 'lucide-react';
 import { 
@@ -7,9 +7,59 @@ import {
   CarouselContent, 
   CarouselItem
 } from '@/components/ui/carousel';
+import useEmblaCarousel from 'embla-carousel-react';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaMobileRef, emblaMobileApi] = useEmblaCarousel({ loop: true });
+  
+  // Auto-scroll functionality
+  const autoplay = useCallback((api, intervalTime = 4000) => {
+    let scrolling = true;
+    let intervalId: NodeJS.Timeout | null = null;
+
+    const scroll = () => {
+      if (!scrolling) return;
+      api?.scrollNext();
+    };
+
+    const play = () => {
+      if (intervalId) clearInterval(intervalId);
+      intervalId = setInterval(scroll, intervalTime);
+    };
+
+    const onSelect = () => {
+      play();
+    };
+
+    api?.on('select', onSelect);
+    play();
+
+    return () => {
+      scrolling = false;
+      if (intervalId) clearInterval(intervalId);
+      api?.off('select', onSelect);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (emblaApi) {
+      const stopAutoplay = autoplay(emblaApi, 4000);
+      return () => {
+        stopAutoplay();
+      };
+    }
+  }, [emblaApi, autoplay]);
+
+  useEffect(() => {
+    if (emblaMobileApi) {
+      const stopAutoplay = autoplay(emblaMobileApi, 4000);
+      return () => {
+        stopAutoplay();
+      };
+    }
+  }, [emblaMobileApi, autoplay]);
   
   useEffect(() => {
     if (sectionRef.current) {
@@ -70,10 +120,10 @@ const HeroSection = () => {
         
         {/* Carousel - Right Side - Auto-rotating images without navigation buttons */}
         <div className="relative h-full max-h-[80vh] overflow-hidden rounded-lg shadow-xl hidden md:block">
-          <Carousel className="w-full h-full" opts={{ loop: true, duration: 4000, align: "center", autoplay: true }}>
-            <CarouselContent className="h-full">
+          <div className="w-full h-full overflow-hidden" ref={emblaRef}>
+            <div className="flex h-full">
               {slides.map((slide, index) => (
-                <CarouselItem key={index} className="h-full">
+                <div key={index} className="flex-[0_0_100%] h-full min-w-0">
                   <div className="relative h-full w-full overflow-hidden rounded-lg">
                     <img 
                       src={slide.image} 
@@ -81,27 +131,27 @@ const HeroSection = () => {
                       className="w-full h-full object-cover object-center"
                     />
                   </div>
-                </CarouselItem>
+                </div>
               ))}
-            </CarouselContent>
-          </Carousel>
+            </div>
+          </div>
         </div>
 
         {/* Mobile Image (only visible on mobile) - auto-rotating without navigation buttons */}
         <div className="md:hidden w-full h-80 rounded-lg overflow-hidden shadow-lg">
-          <Carousel className="w-full h-full" opts={{ loop: true, duration: 4000, align: "center", autoplay: true }}>
-            <CarouselContent className="h-full">
+          <div className="w-full h-full overflow-hidden" ref={emblaMobileRef}>
+            <div className="flex h-full">
               {slides.map((slide, index) => (
-                <CarouselItem key={index} className="h-full">
+                <div key={index} className="flex-[0_0_100%] h-full min-w-0">
                   <img 
                     src={slide.image} 
                     alt={`Appreciatti - Vela Artesanal ${index + 1}`} 
                     className="w-full h-full object-cover"
                   />
-                </CarouselItem>
+                </div>
               ))}
-            </CarouselContent>
-          </Carousel>
+            </div>
+          </div>
         </div>
       </div>
 
