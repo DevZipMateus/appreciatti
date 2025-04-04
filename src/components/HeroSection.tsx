@@ -87,7 +87,7 @@ const HeroSection = () => {
               ))}
             </CarouselContent>
             
-            <div className="absolute bottom-4 right-4 z-20 flex gap-2">
+            <div className="absolute inset-0 flex items-center justify-between p-4 z-20">
               <CarouselPrevious className="relative left-0 translate-y-0 h-8 w-8 bg-white/20 hover:bg-white/40 border-none" />
               <CarouselNext className="relative right-0 translate-y-0 h-8 w-8 bg-white/20 hover:bg-white/40 border-none" />
             </div>
@@ -109,7 +109,7 @@ const HeroSection = () => {
               ))}
             </CarouselContent>
             
-            <div className="absolute bottom-4 right-4 z-20 flex gap-2">
+            <div className="absolute inset-0 flex items-center justify-between p-4 z-20">
               <CarouselPrevious className="relative left-0 translate-y-0 h-8 w-8 bg-white/20 hover:bg-white/40 border-none" />
               <CarouselNext className="relative right-0 translate-y-0 h-8 w-8 bg-white/20 hover:bg-white/40 border-none" />
             </div>
