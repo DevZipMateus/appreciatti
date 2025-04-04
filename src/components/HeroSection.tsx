@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Flame, Music } from 'lucide-react';
