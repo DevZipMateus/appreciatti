@@ -44,7 +44,7 @@ const Header = () => {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className={`h-10 w-10 ${isScrolled ? 'text-secondary-foreground' : 'text-white'}`}>
+                <Button variant="ghost" size="icon" className={`h-10 w-10 ${isScrolled ? 'text-secondary-foreground' : 'text-[#eee]'}`}>
                   <Menu size={24} />
                   <span className="sr-only">Abrir menu</span>
                 </Button>
@@ -53,7 +53,7 @@ const Header = () => {
                 <nav className="flex flex-col items-center space-y-4 text-lg">
                   <NavLinks mobile isScrolled={isScrolled} />
                   <SheetClose asChild>
-                    <Button className="quote-btn mt-4 w-full text-white rounded-md transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 py-3 text-base">
+                    <Button className="quote-btn mt-4 w-full text-[#eee] rounded-md transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 py-3 text-base">
                       <Flame size={18} className="candle-flicker" />
                       Comprar Agora
                     </Button>
@@ -98,10 +98,10 @@ const NavLinks = ({
   return <>
       {links.map(link => <a key={link.name} href={link.href} className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
             ${mobile 
-              ? `text-xl ${isScrolled ? 'text-foreground' : 'text-white'} hover:text-primary mb-2 w-full text-center py-3` 
+              ? `text-xl ${isScrolled ? 'text-foreground' : 'text-[#eee]'} hover:text-primary mb-2 w-full text-center py-3` 
               : isScrolled 
                 ? 'text-foreground/80 hover:text-primary hover:bg-secondary/50' 
-                : 'text-white hover:text-white/80 hover:bg-white/10'}`} 
+                : 'text-[#eee] hover:text-[#eee]/80 hover:bg-[#eee]/10'}`} 
             onClick={onClick}>
           {link.name}
         </a>)}

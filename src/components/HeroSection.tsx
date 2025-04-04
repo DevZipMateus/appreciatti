@@ -47,15 +47,15 @@ const HeroSection = () => {
     >
       <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12">
         <div className="relative z-10 text-left max-w-xl">
-          <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-white font-medium mb-6 animate-slide-up [animation-delay:300ms] border border-white/20">
+          <span className="inline-block px-4 py-2 bg-[#eee]/10 backdrop-blur-md rounded-full text-[#eee] font-medium mb-6 animate-slide-up [animation-delay:300ms] border border-[#eee]/20">
             Velas artesanais para momentos especiais
           </span>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up [animation-delay:500ms]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#eee] mb-6 leading-tight animate-slide-up [animation-delay:500ms]">
             Transforme momentos cotidianos em <span className="text-accent italic">rituais de bem-estar</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl animate-slide-up [animation-delay:700ms]">
+          <p className="text-lg md:text-xl text-[#eee]/90 mb-8 max-w-2xl animate-slide-up [animation-delay:700ms]">
             Velas aromáticas artesanais que combinam sofisticação, design minimalista e fragrâncias exclusivas 
             para proporcionar uma experiência sensorial completa.
           </p>
@@ -71,7 +71,7 @@ const HeroSection = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white/30 bg-white/10 hover:bg-white/20 text-white rounded-md shadow-md transition-all duration-300 flex gap-2"
+              className="border-[#eee]/30 bg-[#eee]/10 hover:bg-[#eee]/20 text-[#eee] rounded-md shadow-md transition-all duration-300 flex gap-2"
               onClick={openSpotifyPlaylist}
             >
               <Music size={20} className="group-hover:animate-pulse" />
@@ -79,14 +79,14 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          <div className="text-white/80 animate-slide-up [animation-delay:1100ms]">
+          <div className="text-[#eee]/80 animate-slide-up [animation-delay:1100ms]">
             <p className="text-sm italic">Acenda. Inspire-se. Conecte-se.</p>
           </div>
         </div>
         
-        <div className="relative w-full max-w-md lg:max-w-none mx-auto lg:mx-0">
-          <div className="rounded-xl overflow-hidden shadow-2xl border border-white/20">
-            <AspectRatio ratio={9/16} className="w-full">
+        <div className="relative w-full max-w-lg mx-auto lg:mx-0">
+          <div className="rounded-xl overflow-hidden shadow-2xl border border-[#eee]/20">
+            <AspectRatio ratio={3/4} className="w-full">
               <video 
                 className="w-full h-full object-cover"
                 autoPlay
@@ -105,7 +105,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white cursor-pointer animate-bounce z-20" onClick={scrollToNextSection}>
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-[#eee] cursor-pointer animate-bounce z-20" onClick={scrollToNextSection}>
         <ChevronDown size={32} className="opacity-80 hover:opacity-100 transition-opacity" />
       </div>
     </section>

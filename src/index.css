@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -9,38 +8,34 @@
   :root {
     --background: 210 40% 98%;
     --foreground: 220 20% 20%;
-    --card: 0 0% 100%;
+    --card: 0 0% 93%;
     --card-foreground: 220 20% 20%;
-    --popover: 0 0% 100%;
+    --popover: 0 0% 93%;
     --popover-foreground: 220 20% 20%;
     
-    /* Azul escuro */
     --primary: 220 70% 20%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 0 0% 93%;
     
-    /* Off-white */
     --secondary: 30 20% 96%;
     --secondary-foreground: 220 70% 20%;
     
-    /* Verde musgo */
     --accent: 90 25% 35%;
-    --accent-foreground: 0 0% 100%;
+    --accent-foreground: 0 0% 93%;
     
-    /* Terra cota */
     --muted: 15 40% 50%;
     --muted-foreground: 215 25% 40%;
     
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 93%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 220 70% 20%;
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 0 0% 93%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 93%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
@@ -94,7 +89,6 @@
   }
 }
 
-/* Custom animations */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(20px);
@@ -106,18 +100,15 @@
   transform: translateY(0);
 }
 
-/* Glass effect */
 .glass-effect {
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(238, 238, 238, 0.8);
 }
 
-/* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
 }
 
-/* WhatsApp Button Animation */
 .whatsapp-btn {
   animation: pulse 2s infinite;
   transition: all 0.3s ease;
@@ -189,7 +180,6 @@ html {
   }
 }
 
-/* Service Card Hover Animation */
 .service-card {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -198,12 +188,10 @@ html {
   transform: translateY(-10px);
 }
 
-/* Testimonial Slider Animation */
 .testimonial-slider {
   transition: transform 0.6s ease-in-out;
 }
 
-/* Form input focus animation */
 .form-input {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -213,7 +201,6 @@ html {
   box-shadow: 0 0 0 2px rgba(var(--primary), 0.2);
 }
 
-/* Quote Request Button Animation */
 .quote-btn {
   position: relative;
   overflow: hidden;
@@ -228,7 +215,7 @@ html {
   left: 0;
   width: 0%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(238, 238, 238, 0.2);
   transition: all 0.4s ease;
   z-index: -1;
 }
@@ -246,7 +233,6 @@ html {
   transform: translateY(1px);
 }
 
-/* Mobile menu improvements */
 @media (max-width: 768px) {
   .mobile-nav-link {
     @apply w-full text-center py-3 px-5;
@@ -256,25 +242,21 @@ html {
     @apply w-full justify-center;
   }
   
-  /* Improved touch targets for mobile */
   a, button {
     @apply min-h-[44px] flex items-center;
   }
   
-  /* Sheet dialog improvements for mobile menu */
   [data-radix-sheet-content] {
     max-height: 100vh !important;
     height: auto !important;
     padding-bottom: 24px !important;
   }
   
-  /* Ensure the mobile menu is separate from the content */
   [data-radix-sheet-content] {
     z-index: 9999;
   }
 }
 
-/* Shadow utility classes */
 .shadow-nav {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
@@ -283,7 +265,6 @@ html {
   box-shadow: 0 4px 6px rgba(22, 101, 52, 0.1);
 }
 
-/* Add responsive spacings */
 @media (max-width: 640px) {
   h1 {
     @apply text-3xl;
@@ -298,7 +279,6 @@ html {
   }
 }
 
-/* Candle animation */
 .candle-flicker {
   animation: flicker 3s infinite alternate;
 }
