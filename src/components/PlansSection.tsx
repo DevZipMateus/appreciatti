@@ -39,7 +39,8 @@ const PlansSection = () => {
         { text: "Brindes para clientes e colaboradores" }
       ],
       popular: false,
-      cta: "Solicitar Orçamento"
+      cta: "Solicitar Orçamento",
+      whatsappMessage: "Olá! Gostaria de solicitar um orçamento para velas personalizadas para minha empresa."
     },
     {
       name: "Eventos",
@@ -53,7 +54,8 @@ const PlansSection = () => {
         { text: "Decoração do ambiente" }
       ],
       popular: true,
-      cta: "Solicitar Orçamento"
+      cta: "Solicitar Orçamento",
+      whatsappMessage: "Olá! Gostaria de solicitar um orçamento para velas personalizadas para meu evento/casamento."
     },
     {
       name: "Restaurantes",
@@ -67,7 +69,8 @@ const PlansSection = () => {
         { text: "Embalagens personalizadas" }
       ],
       popular: false,
-      cta: "Solicitar Orçamento"
+      cta: "Solicitar Orçamento",
+      whatsappMessage: "Olá! Gostaria de solicitar um orçamento para velas personalizadas para meu restaurante/estabelecimento."
     }
   ];
   
@@ -101,7 +104,8 @@ const PlansSection = () => {
               features={option.features} 
               popular={option.popular} 
               cta={option.cta} 
-              index={index} 
+              index={index}
+              whatsappMessage={option.whatsappMessage}
             />
           ))}
         </div>
@@ -111,7 +115,10 @@ const PlansSection = () => {
             Todas as nossas velas são produzidas com materiais 100% vegetais e não tóxicos, garantindo uma queima limpa e saudável.
             Cada vela personalizada pode incluir uma playlist exclusiva e sugestões de rituais de bem-estar.
           </p>
-          <Button className="quote-btn text-white rounded-md transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 mx-auto">
+          <Button 
+            className="quote-btn text-white rounded-md transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 mx-auto"
+            onClick={() => window.open('https://wa.me/5561998659605?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20opções%20de%20personalização%20das%20velas%20da%20Appreciatti.', '_blank')}
+          >
             <Flame className="candle-flicker" size={18} />
             Saiba Mais Sobre Personalização
           </Button>
@@ -131,6 +138,7 @@ interface CustomCardProps {
   popular: boolean;
   cta: string;
   index: number;
+  whatsappMessage: string;
 }
 
 const CustomCard = ({
@@ -140,45 +148,58 @@ const CustomCard = ({
   features,
   popular,
   cta,
-  index
-}: CustomCardProps) => (
-  <Card className={`animate-on-scroll service-card relative overflow-hidden border ${popular ? 'shadow-lg scale-105 border-primary/20 z-10' : 'shadow-md z-0'} [animation-delay:${index * 150}ms]`}>
-    {popular && (
-      <div className="absolute top-0 right-0">
-        <div className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 transform rotate-0 translate-x-2 -translate-y-0 shadow-sm">
-          POPULAR
+  index,
+  whatsappMessage
+}: CustomCardProps) => {
+  const handleWhatsAppClick = () => {
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    // Open WhatsApp with the custom message
+    window.open(`https://wa.me/5561998659605?text=${encodedMessage}`, '_blank');
+  };
+
+  return (
+    <Card className={`animate-on-scroll service-card relative overflow-hidden border ${popular ? 'shadow-lg scale-105 border-primary/20 z-10' : 'shadow-md z-0'} [animation-delay:${index * 150}ms]`}>
+      {popular && (
+        <div className="absolute top-0 right-0">
+          <div className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 transform rotate-0 translate-x-2 -translate-y-0 shadow-sm">
+            POPULAR
+          </div>
         </div>
-      </div>
-    )}
-    
-    <CardHeader className="pt-8 pb-4">
-      <div className="text-center">
-        <div className="flex justify-center mb-4">
-          {icon}
+      )}
+      
+      <CardHeader className="pt-8 pb-4">
+        <div className="text-center">
+          <div className="flex justify-center mb-4">
+            {icon}
+          </div>
+          <CardTitle className={`text-2xl font-bold ${popular ? 'text-primary' : ''}`}>{name}</CardTitle>
+          <p className="text-muted-foreground mt-1">{description}</p>
         </div>
-        <CardTitle className={`text-2xl font-bold ${popular ? 'text-primary' : ''}`}>{name}</CardTitle>
-        <p className="text-muted-foreground mt-1">{description}</p>
-      </div>
-    </CardHeader>
-    
-    <CardContent className="text-center">
-      <ul className="space-y-3 text-left mb-8">
-        {features.map((feature, i) => (
-          <li key={i} className="flex items-start gap-3">
-            <Check className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
-            <span>{feature.text}</span>
-          </li>
-        ))}
-      </ul>
-    </CardContent>
-    
-    <CardFooter className="pt-0 pb-8">
-      <Button className={`quote-btn w-full rounded-md shadow-md transition-all duration-300 flex items-center justify-center gap-2 ${popular ? 'bg-primary hover:bg-primary/90 text-white' : 'bg-primary/10 hover:bg-primary/20 text-primary'}`}>
-        <Flame size={18} className={`candle-flicker ${popular ? 'text-white' : 'text-primary'}`} />
-        {cta}
-      </Button>
-    </CardFooter>
-  </Card>
-);
+      </CardHeader>
+      
+      <CardContent className="text-center">
+        <ul className="space-y-3 text-left mb-8">
+          {features.map((feature, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <Check className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+              <span>{feature.text}</span>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+      
+      <CardFooter className="pt-0 pb-8">
+        <Button 
+          onClick={handleWhatsAppClick}
+          className={`quote-btn w-full rounded-md shadow-md transition-all duration-300 flex items-center justify-center gap-2 ${popular ? 'bg-primary hover:bg-primary/90 text-white' : 'bg-primary/10 hover:bg-primary/20 text-primary'}`}
+        >
+          <Flame size={18} className={`candle-flicker ${popular ? 'text-white' : 'text-primary'}`} />
+          {cta}
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+};
 
 export default PlansSection;
