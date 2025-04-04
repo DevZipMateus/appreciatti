@@ -93,8 +93,10 @@ const HeroSection = () => {
         </div>
         
         <div className="relative w-full max-w-lg mx-auto lg:mx-0">
-          <Carousel className="rounded-xl overflow-hidden shadow-2xl border border-[#eee]/20"
-            onSelect={(index) => setActiveSlide(index)}>
+          <Carousel 
+            className="rounded-xl overflow-hidden shadow-2xl border border-[#eee]/20"
+            onSelect={(index) => setActiveSlide(index)}
+          >
             <CarouselContent>
               <CarouselItem>
                 <AspectRatio ratio={3/4} className="w-full">
