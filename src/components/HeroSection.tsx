@@ -85,6 +85,15 @@ const HeroSection = () => {
     }
   };
 
+  const scrollToCollections = () => {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const slides = [
     {
       image: "/lovable-uploads/7976b302-d24d-406f-b1c8-a82c97713a9f.png",
@@ -112,7 +121,11 @@ const HeroSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-start items-start animate-slide-up [animation-delay:900ms] mb-16">
-            <Button size="lg" className="rounded-md shadow-md transition-all duration-300 bg-muted hover:bg-muted/90 text-white">
+            <Button 
+              size="lg" 
+              className="rounded-md shadow-md transition-all duration-300 bg-muted hover:bg-muted/90 text-white"
+              onClick={scrollToCollections}
+            >
               Conheça Nossas Coleções
             </Button>
             <Button size="lg" variant="secondary" className="quote-btn hover:border-primary hover:bg-secondary/70 group rounded-md shadow-md transition-all duration-300 flex gap-2 text-primary">
