@@ -31,16 +31,9 @@ const HeroSection = () => {
   const slides = [
     {
       image: "/lovable-uploads/7976b302-d24d-406f-b1c8-a82c97713a9f.png",
-      title: "PRIMEIRA COMPRA?",
-      subtitle: "Te damos 10% off",
-      alignment: "left"
     },
     {
       image: "/lovable-uploads/0b95ba42-a88d-4a59-a202-e30c2e01120e.png",
-      title: "VELA 100% VEGETAL",
-      subtitle: "Cruelty Free",
-      description: "ESSÊNCIA PRÊMIUM\nPRODUTO VEGANO\nFEITO À MÃO",
-      alignment: "right"
     }
   ];
 
@@ -77,8 +70,8 @@ const HeroSection = () => {
           </div>
         </div>
         
-        {/* Carousel - Right Side */}
-        <div className="relative h-full max-h-[70vh] overflow-hidden rounded-lg shadow-xl hidden md:block">
+        {/* Carousel - Right Side - Now with larger images and no text overlay */}
+        <div className="relative h-full max-h-[80vh] overflow-hidden rounded-lg shadow-xl hidden md:block">
           <Carousel className="w-full h-full" opts={{ loop: true, duration: 20 }}>
             <CarouselContent className="h-full">
               {slides.map((slide, index) => (
@@ -86,22 +79,9 @@ const HeroSection = () => {
                   <div className="relative h-full w-full overflow-hidden rounded-lg">
                     <img 
                       src={slide.image} 
-                      alt={`Appreciatti - ${slide.title}`} 
+                      alt={`Appreciatti - Vela Artesanal ${index + 1}`} 
                       className="w-full h-full object-cover object-center"
                     />
-                    
-                    <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/60 to-transparent">
-                      <div className="text-white">
-                        <h2 className="text-3xl md:text-4xl font-display mb-2">{slide.title}</h2>
-                        <p className="text-xl mb-2">{slide.subtitle}</p>
-                        {slide.description && (
-                          <div className="text-lg whitespace-pre-line">
-                            {slide.description}
-                          </div>
-                        )}
-                        <p className="mt-4 text-sm">@APPRECIATTI</p>
-                      </div>
-                    </div>
                   </div>
                 </CarouselItem>
               ))}
@@ -114,15 +94,15 @@ const HeroSection = () => {
           </Carousel>
         </div>
 
-        {/* Mobile Image (only visible on mobile) */}
-        <div className="md:hidden w-full h-64 rounded-lg overflow-hidden shadow-lg">
+        {/* Mobile Image (only visible on mobile) - larger and no text overlay */}
+        <div className="md:hidden w-full h-80 rounded-lg overflow-hidden shadow-lg">
           <Carousel className="w-full h-full" opts={{ loop: true }}>
             <CarouselContent className="h-full">
               {slides.map((slide, index) => (
                 <CarouselItem key={index} className="h-full">
                   <img 
                     src={slide.image} 
-                    alt={`Appreciatti - ${slide.title}`} 
+                    alt={`Appreciatti - Vela Artesanal ${index + 1}`} 
                     className="w-full h-full object-cover"
                   />
                 </CarouselItem>
