@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Flame, Music } from 'lucide-react';
@@ -11,17 +10,27 @@ import useEmblaCarousel from 'embla-carousel-react';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [emblaMobileRef, emblaMobileApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    dragFree: true,
+    containScroll: "trimSnaps",
+    slidesToScroll: 1
+  });
   
-  // Auto-scroll functionality
-  const autoplay = useCallback((api, intervalTime = 4000) => {
+  const [emblaMobileRef, emblaMobileApi] = useEmblaCarousel({ 
+    loop: true,
+    dragFree: true,
+    containScroll: "trimSnaps",
+    slidesToScroll: 1
+  });
+  
+  const autoplay = useCallback((api, intervalTime = 5000) => {
     let scrolling = true;
     let intervalId: NodeJS.Timeout | null = null;
 
     const scroll = () => {
       if (!scrolling) return;
-      api?.scrollNext();
+      api?.scrollNext({ animation: { duration: 2000 } });
     };
 
     const play = () => {
@@ -45,7 +54,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     if (emblaApi) {
-      const stopAutoplay = autoplay(emblaApi, 4000);
+      const stopAutoplay = autoplay(emblaApi, 5000);
       return () => {
         stopAutoplay();
       };
@@ -54,7 +63,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     if (emblaMobileApi) {
-      const stopAutoplay = autoplay(emblaMobileApi, 4000);
+      const stopAutoplay = autoplay(emblaMobileApi, 5000);
       return () => {
         stopAutoplay();
       };
@@ -88,7 +97,6 @@ const HeroSection = () => {
   return (
     <section id="hero" ref={sectionRef} className="relative min-h-screen flex items-center pt-16 bg-gradient-to-r from-background to-secondary/30">
       <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        {/* Text Content - Left Side */}
         <div className="relative z-10 text-left">
           <span className="inline-block px-4 py-2 bg-secondary/60 backdrop-blur-md rounded-full text-secondary-foreground font-medium mb-6 animate-slide-up [animation-delay:300ms]">
             Velas artesanais para momentos especiais
@@ -118,17 +126,16 @@ const HeroSection = () => {
           </div>
         </div>
         
-        {/* Carousel - Right Side - Auto-rotating images without navigation buttons */}
         <div className="relative h-full max-h-[80vh] overflow-hidden rounded-lg shadow-xl hidden md:block">
           <div className="w-full h-full overflow-hidden" ref={emblaRef}>
             <div className="flex h-full">
               {slides.map((slide, index) => (
-                <div key={index} className="flex-[0_0_100%] h-full min-w-0">
+                <div key={index} className="flex-shrink-0 h-full min-w-0 md:min-w-[100%]">
                   <div className="relative h-full w-full overflow-hidden rounded-lg">
                     <img 
                       src={slide.image} 
                       alt={`Appreciatti - Vela Artesanal ${index + 1}`} 
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-full object-contain transition-transform duration-2000"
                     />
                   </div>
                 </div>
@@ -137,16 +144,15 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Mobile Image (only visible on mobile) - auto-rotating without navigation buttons */}
         <div className="md:hidden w-full h-80 rounded-lg overflow-hidden shadow-lg">
           <div className="w-full h-full overflow-hidden" ref={emblaMobileRef}>
             <div className="flex h-full">
               {slides.map((slide, index) => (
-                <div key={index} className="flex-[0_0_100%] h-full min-w-0">
+                <div key={index} className="flex-shrink-0 h-full min-w-[100%]">
                   <img 
                     src={slide.image} 
                     alt={`Appreciatti - Vela Artesanal ${index + 1}`} 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain transition-transform duration-2000"
                   />
                 </div>
               ))}
@@ -155,7 +161,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll down indicator */}
       <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 text-foreground cursor-pointer animate-bounce z-20" onClick={scrollToNextSection}>
         <ChevronDown size={32} />
       </div>
