@@ -39,9 +39,9 @@ const HeroSection = () => {
     <section 
       id="hero" 
       ref={sectionRef} 
-      className="relative min-h-screen flex items-center pt-16 bg-[#2c3f67] bg-opacity-95"
+      className="relative min-h-screen flex items-center pt-16"
       style={{
-        backgroundImage: 'linear-gradient(to right, rgba(44, 63, 103, 0.97), rgba(44, 63, 103, 0.85))',
+        background: 'linear-gradient(to bottom, #2c3f67 0%, #4a6491 50%, #ffffff 100%)',
         boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.2)'
       }}
     >
@@ -84,22 +84,24 @@ const HeroSection = () => {
           </div>
         </div>
         
-        <div className="relative h-full w-full max-w-2xl mx-auto lg:mx-0 rounded-xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-sm">
-          <AspectRatio ratio={9/16} className="w-full max-h-[75vh]">
-            <video 
-              className="w-full h-full object-cover rounded-xl"
-              autoPlay
-              muted
-              loop
-              playsInline
-            >
-              <source 
-                src="https://zipline.zipticket.com.br/submod/download.php?disposition=inline&chave=00.257179.42a6.ce99.af0&nome=1032524872063400.mp4" 
-                type="video/mp4" 
-              />
-              Seu navegador não suporta vídeos HTML5.
-            </video>
-          </AspectRatio>
+        <div className="relative w-full max-w-md lg:max-w-none mx-auto lg:mx-0">
+          <div className="rounded-xl overflow-hidden shadow-2xl border border-white/20">
+            <AspectRatio ratio={9/16} className="w-full">
+              <video 
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <source 
+                  src="https://zipline.zipticket.com.br/submod/download.php?disposition=inline&chave=00.257179.42a6.ce99.af0&nome=1032524872063400.mp4" 
+                  type="video/mp4" 
+                />
+                Seu navegador não suporta vídeos HTML5.
+              </video>
+            </AspectRatio>
+          </div>
         </div>
       </div>
 
