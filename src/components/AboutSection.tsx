@@ -27,8 +27,12 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="section-padding bg-white">
-      <div className="container mx-auto">
+    <section id="about" ref={sectionRef} className="section-padding bg-white relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-20 left-0 w-64 h-64 rounded-full bg-primary/5 -translate-x-1/2 z-0"></div>
+      <div className="absolute bottom-10 right-0 w-80 h-80 rounded-full bg-accent/5 translate-x-1/3 z-0"></div>
+      
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 animate-on-scroll">
             Sobre Nós
@@ -68,27 +72,34 @@ const AboutSection = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <AboutCard 
-              icon={<Heart className="h-10 w-10 text-primary" />}
-              title="Sofisticação"
-              description="Coleções autorais inspiradas na conexão consigo mesmo, no relaxamento e na meditação. Design minimalista e elegante que complementa qualquer ambiente."
-            />
-            <AboutCard 
-              icon={<Sparkles className="h-10 w-10 text-primary" />}
-              title="Qualidade"
-              description="Utilizamos ceras premium, pavios ecológicos e fragrâncias cuidadosamente selecionadas para garantir uma queima limpa, prolongada e envolvente."
-            />
-            <AboutCard 
-              icon={<Leaf className="h-10 w-10 text-primary" />}
-              title="Sustentabilidade"
-              description="Comprometidos com práticas sustentáveis, buscamos materiais que respeitam o meio ambiente e incentivamos o reuso das embalagens."
-            />
-            <AboutCard 
-              icon={<Check className="h-10 w-10 text-primary" />}
-              title="Experiência"
-              description="Mais que um aroma, nossas velas proporcionam uma experiência sensorial completa, trazendo aconchego, equilíbrio e conexão para seus momentos."
-            />
+          <div className="grid grid-cols-1 gap-6 relative">
+            <div className="relative mx-auto animate-on-scroll">
+              <img 
+                src="/lovable-uploads/3af13b38-e75e-4ef6-9db5-24d6cf254808.png"
+                alt="Flor decorativa artesanal" 
+                className="rounded-lg shadow-lg max-w-xs mx-auto"
+              />
+              <div className="absolute -bottom-10 -left-10 w-28 h-28 overflow-hidden rounded-full shadow-lg border-4 border-[#eee] animate-on-scroll">
+                <img 
+                  src="/lovable-uploads/8b3b4d36-32f0-446d-a485-e735f6373954.png" 
+                  alt="Vela artesanal" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-6 mt-16">
+              <AboutCard 
+                icon={<Heart className="h-10 w-10 text-primary" />}
+                title="Sofisticação"
+                description="Design minimalista e elegante que complementa qualquer ambiente."
+              />
+              <AboutCard 
+                icon={<Sparkles className="h-10 w-10 text-primary" />}
+                title="Qualidade"
+                description="Materiais premium para uma queima limpa e duradoura."
+              />
+            </div>
           </div>
         </div>
       </div>

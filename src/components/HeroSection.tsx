@@ -1,11 +1,19 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Music } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from '@/components/ui/carousel';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
   
   useEffect(() => {
     if (sectionRef.current) {
@@ -85,22 +93,58 @@ const HeroSection = () => {
         </div>
         
         <div className="relative w-full max-w-lg mx-auto lg:mx-0">
-          <div className="rounded-xl overflow-hidden shadow-2xl border border-[#eee]/20">
-            <AspectRatio ratio={3/4} className="w-full">
-              <video 
-                className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-              >
-                <source 
-                  src="https://zipline.zipticket.com.br/submod/download.php?disposition=inline&chave=00.257179.42a6.ce99.af0&nome=1032524872063400.mp4" 
-                  type="video/mp4" 
+          <Carousel className="rounded-xl overflow-hidden shadow-2xl border border-[#eee]/20"
+            onSelect={(index) => setActiveSlide(index)}>
+            <CarouselContent>
+              <CarouselItem>
+                <AspectRatio ratio={3/4} className="w-full">
+                  <video 
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  >
+                    <source 
+                      src="https://zipline.zipticket.com.br/submod/download.php?disposition=inline&chave=00.257179.42a6.ce99.af0&nome=1032524872063400.mp4" 
+                      type="video/mp4" 
+                    />
+                    Seu navegador não suporta vídeos HTML5.
+                  </video>
+                </AspectRatio>
+              </CarouselItem>
+              <CarouselItem>
+                <AspectRatio ratio={3/4} className="w-full">
+                  <img 
+                    src="/lovable-uploads/8b3b4d36-32f0-446d-a485-e735f6373954.png" 
+                    alt="Vela artesanal em recipiente de vidro" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </CarouselItem>
+            </CarouselContent>
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+              {[0, 1].map((index) => (
+                <button 
+                  key={index}
+                  aria-label={`Ir para slide ${index + 1}`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    activeSlide === index ? 'bg-[#eee] w-4' : 'bg-[#eee]/50'
+                  }`}
+                  onClick={() => setActiveSlide(index)}
                 />
-                Seu navegador não suporta vídeos HTML5.
-              </video>
-            </AspectRatio>
+              ))}
+            </div>
+          </Carousel>
+
+          <div className="absolute -bottom-6 -right-12 animate-float hidden md:block">
+            <div className="relative w-36 h-36 p-1 bg-[#eee]/10 backdrop-blur-md rounded-full shadow-lg border border-[#eee]/20">
+              <img 
+                src="/lovable-uploads/3af13b38-e75e-4ef6-9db5-24d6cf254808.png" 
+                alt="Flor decorativa" 
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
           </div>
         </div>
       </div>

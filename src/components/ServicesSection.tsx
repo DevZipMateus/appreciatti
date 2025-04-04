@@ -1,6 +1,5 @@
 
 import { useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Sparkles, Heart, Moon, Rainbow, Leaf, Music } from 'lucide-react';
 
@@ -30,32 +29,34 @@ const ServicesSection = () => {
     {
       icon: <Sparkles className="h-12 w-12 text-primary" />,
       title: "Coleção Essência 🕊️",
-      description: "A pureza do essencial. Velas com fragrâncias sofisticadas e design minimalista, trazendo equilíbrio e sofisticação ao ambiente. Potes Pianezza transparentes com tampa preta. 'No silêncio, encontra-se a essência. Acenda. Respire. Contemple.'"
+      description: "A pureza do essencial. Velas com fragrâncias sofisticadas e design minimalista, trazendo equilíbrio e sofisticação ao ambiente.",
+      image: "/lovable-uploads/8b3b4d36-32f0-446d-a485-e735f6373954.png"
     },
     {
       icon: <Heart className="h-12 w-12 text-primary" />,
       title: "Coleção Afeto 🍰",
-      description: "Aromas aconchegantes que remetem a memórias afetivas e momentos de prazer. Perfeita para quem ama fragrâncias doces e envolventes. Potes Patê e Whisky de vidro transparente com tampa de madeira pinus."
+      description: "Aromas aconchegantes que remetem a memórias afetivas e momentos de prazer. Perfeita para quem ama fragrâncias doces e envolventes."
     },
     {
       icon: <Moon className="h-12 w-12 text-primary" />,
       title: "Coleção Véu da Noite 🌙✨",
-      description: "Uma linha voltada para a espiritualidade e conexão com o universo. Perfeita para rituais, meditação e introspecção. Potes de vidro preto fosco e azul escuro translúcido com tampa dourada. 'O universo fala em sussurros. Acenda sua vela e escute a noite.'"
+      description: "Uma linha voltada para a espiritualidade e conexão com o universo. Perfeita para rituais, meditação e introspecção."
     },
     {
       icon: <Rainbow className="h-12 w-12 text-primary" />,
       title: "Coleção Lume 🌈💫",
-      description: "Uma linha que celebra a alegria, a criatividade e a criança interior. Velas coloridas, com aromas vibrantes e frases inspiradoras. Potes de vidro colorido com tampas metálicas. 'A vida é feita de luz e cor. Deixe sua criança interior brincar. Acenda. Sorria. Dance.'"
+      description: "Uma linha que celebra a alegria, a criatividade e a criança interior. Velas coloridas, com aromas vibrantes e frases inspiradoras."
     },
     {
       icon: <Leaf className="h-12 w-12 text-primary" />,
       title: "Coleção Florescer 🌿🌸",
-      description: "Como um passeio em um jardim florido. Velas maiores, decoradas com delicadas flores de cera, trazendo frescor, renovação e suavidade ao ambiente. 'Cada chama acesa é um novo botão que floresce. Permita-se desabrochar.'"
+      description: "Como um passeio em um jardim florido. Velas maiores, decoradas com delicadas flores de cera, trazendo frescor e renovação.",
+      image: "/lovable-uploads/3af13b38-e75e-4ef6-9db5-24d6cf254808.png"
     },
     {
       icon: <Music className="h-12 w-12 text-primary" />,
       title: "Experiência Sensorial 🎵",
-      description: "Cada coleção é acompanhada por uma playlist especialmente curada para complementar a experiência aromática, transformando o simples ato de acender uma vela em um ritual completo de bem-estar para todos os sentidos."
+      description: "Cada coleção é acompanhada por uma playlist especialmente curada para complementar a experiência aromática e seu bem-estar."
     }
   ];
 
@@ -82,13 +83,10 @@ const ServicesSection = () => {
               icon={collection.icon} 
               title={collection.title} 
               description={collection.description} 
-              index={index} 
+              index={index}
+              image={collection.image}
             />
           ))}
-        </div>
-
-        <div className="mt-16 text-center animate-on-scroll">
-          
         </div>
       </div>
     </section>
@@ -100,16 +98,23 @@ interface CollectionCardProps {
   title: string;
   description: string;
   index: number;
+  image?: string;
 }
 
 const CollectionCard = ({
   icon,
   title,
   description,
-  index
+  index,
+  image
 }: CollectionCardProps) => (
   <Card className={`animate-on-scroll service-card border border-border/50 shadow-md overflow-hidden h-full [animation-delay:${index * 100}ms]`}>
-    <CardContent className="p-8 flex flex-col items-center text-center h-full">
+    <CardContent className="p-8 flex flex-col items-center text-center h-full relative">
+      {image && (
+        <div className="absolute top-0 right-0 -m-2 w-16 h-16 rounded-full overflow-hidden border-2 border-[#eee] shadow-lg">
+          <img src={image} alt={title} className="w-full h-full object-cover" />
+        </div>
+      )}
       <div className="mb-5 p-4 bg-primary/5 rounded-full">{icon}</div>
       <h3 className="text-xl font-bold mb-3">{title}</h3>
       <p className="text-muted-foreground">{description}</p>
