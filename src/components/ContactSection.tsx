@@ -42,8 +42,8 @@ const ContactSection = () => {
     {
       icon: <MapPin className="h-5 w-5 text-primary" />,
       title: "Endereço",
-      details: "Quadra 204, Lote 8, Bloco B, Apto 904, Águas Claras, Brasília - DF",
-      link: "https://maps.google.com/?q=Quadra+204,+Lote+8,+Bloco+B,+Apto+904,+Águas+Claras,+Brasília+-+DF"
+      details: "Quadra 204, Lote 8, Águas Claras, Brasília - DF",
+      link: "https://maps.google.com/?q=Quadra+204,+Lote+8,+Águas+Claras,+Brasília+-+DF"
     },
     {
       icon: <Clock className="h-5 w-5 text-primary" />,
