@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Flame, Music } from 'lucide-react';
@@ -94,6 +95,10 @@ const HeroSection = () => {
     }
   };
 
+  const openSpotifyPlaylist = () => {
+    window.open('https://open.spotify.com/playlist/7w6jhzdXTowIWjFlUBDUD1?si=2c67a3e734304f0d', '_blank');
+  };
+
   const slides = [
     {
       image: "/lovable-uploads/7976b302-d24d-406f-b1c8-a82c97713a9f.png",
@@ -128,7 +133,12 @@ const HeroSection = () => {
             >
               Conheça Nossas Coleções
             </Button>
-            <Button size="lg" variant="secondary" className="quote-btn hover:border-primary hover:bg-secondary/70 group rounded-md shadow-md transition-all duration-300 flex gap-2 text-primary">
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="quote-btn hover:border-primary hover:bg-secondary/70 group rounded-md shadow-md transition-all duration-300 flex gap-2 text-primary"
+              onClick={openSpotifyPlaylist}
+            >
               <Music size={20} className="group-hover:animate-pulse" />
               <span>Playlists para Relaxar</span>
             </Button>
