@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Music } from 'lucide-react';
@@ -8,18 +7,35 @@ import {
   CarouselContent, 
   CarouselItem, 
   CarouselNext, 
-  CarouselPrevious 
+  CarouselPrevious,
+  type CarouselApi
 } from '@/components/ui/carousel';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
   
   useEffect(() => {
     if (sectionRef.current) {
       sectionRef.current.classList.add('animate-fade-in');
     }
   }, []);
+  
+  useEffect(() => {
+    if (!carouselApi) return;
+    
+    const onSelect = () => {
+      setActiveSlide(carouselApi.selectedScrollSnap());
+    };
+
+    carouselApi.on("select", onSelect);
+    onSelect();
+
+    return () => {
+      carouselApi.off("select", onSelect);
+    };
+  }, [carouselApi]);
   
   const scrollToNextSection = () => {
     const aboutSection = document.getElementById('about');
@@ -43,7 +59,6 @@ const HeroSection = () => {
     window.open('https://open.spotify.com/playlist/7w6jhzdXTowIWjFlUBDUD1?si=2c67a3e734304f0d', '_blank');
   };
 
-  // Fix for TypeScript error by providing the correct type handling
   const handleSelectSlide = (index: number) => {
     setActiveSlide(index);
   };
@@ -100,7 +115,7 @@ const HeroSection = () => {
         <div className="relative w-full max-w-lg mx-auto lg:mx-0">
           <Carousel 
             className="rounded-xl overflow-hidden shadow-2xl border border-[#eee]/20"
-            onSelect={handleSelectSlide}
+            setApi={setCarouselApi}
           >
             <CarouselContent>
               <CarouselItem>
@@ -165,7 +180,7 @@ const HeroSection = () => {
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     activeSlide === index ? 'bg-[#eee] w-4' : 'bg-[#eee]/50'
                   }`}
-                  onClick={() => setActiveSlide(index)}
+                  onClick={() => carouselApi?.scrollTo(index)}
                 />
               ))}
             </div>
