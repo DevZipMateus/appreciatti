@@ -2,74 +2,9 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Flame, Music } from 'lucide-react';
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem
-} from '@/components/ui/carousel';
-import useEmblaCarousel from 'embla-carousel-react';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true,
-    dragFree: true,
-    containScroll: "trimSnaps",
-    slidesToScroll: 1
-  });
-  
-  const [emblaMobileRef, emblaMobileApi] = useEmblaCarousel({ 
-    loop: true,
-    dragFree: true,
-    containScroll: "trimSnaps",
-    slidesToScroll: 1
-  });
-  
-  const autoplay = useCallback((api, intervalTime = 5000) => {
-    let scrolling = true;
-    let intervalId: NodeJS.Timeout | null = null;
-
-    const scroll = () => {
-      if (!scrolling) return;
-      api?.scrollNext({ animation: { duration: 2000 } });
-    };
-
-    const play = () => {
-      if (intervalId) clearInterval(intervalId);
-      intervalId = setInterval(scroll, intervalTime);
-    };
-
-    const onSelect = () => {
-      play();
-    };
-
-    api?.on('select', onSelect);
-    play();
-
-    return () => {
-      scrolling = false;
-      if (intervalId) clearInterval(intervalId);
-      api?.off('select', onSelect);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (emblaApi) {
-      const stopAutoplay = autoplay(emblaApi, 5000);
-      return () => {
-        stopAutoplay();
-      };
-    }
-  }, [emblaApi, autoplay]);
-
-  useEffect(() => {
-    if (emblaMobileApi) {
-      const stopAutoplay = autoplay(emblaMobileApi, 5000);
-      return () => {
-        stopAutoplay();
-      };
-    }
-  }, [emblaMobileApi, autoplay]);
   
   useEffect(() => {
     if (sectionRef.current) {
@@ -99,15 +34,6 @@ const HeroSection = () => {
     window.open('https://open.spotify.com/playlist/7w6jhzdXTowIWjFlUBDUD1?si=2c67a3e734304f0d', '_blank');
   };
 
-  const slides = [
-    {
-      image: "/lovable-uploads/7976b302-d24d-406f-b1c8-a82c97713a9f.png",
-    },
-    {
-      image: "/lovable-uploads/0b95ba42-a88d-4a59-a202-e30c2e01120e.png",
-    }
-  ];
-
   return (
     <section id="hero" ref={sectionRef} className="relative min-h-screen flex items-center pt-16 bg-gradient-to-r from-background to-secondary/30">
       <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -128,7 +54,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-start items-start animate-slide-up [animation-delay:900ms] mb-16">
             <Button 
               size="lg" 
-              className="rounded-md shadow-md transition-all duration-300 bg-muted hover:bg-muted/90 text-white"
+              className="rounded-md shadow-md transition-all duration-300 bg-accent hover:bg-accent/90 text-accent-foreground"
               onClick={scrollToCollections}
             >
               Conheça Nossas Coleções
@@ -149,38 +75,20 @@ const HeroSection = () => {
           </div>
         </div>
         
-        <div className="relative h-full max-h-[80vh] overflow-hidden rounded-lg shadow-xl hidden md:block">
-          <div className="w-full h-full overflow-hidden" ref={emblaRef}>
-            <div className="flex h-full">
-              {slides.map((slide, index) => (
-                <div key={index} className="flex-shrink-0 h-full min-w-0 md:min-w-[100%]">
-                  <div className="relative h-full w-full overflow-hidden rounded-lg">
-                    <img 
-                      src={slide.image} 
-                      alt={`Appreciatti - Vela Artesanal ${index + 1}`} 
-                      className="w-full h-full object-contain transition-transform duration-2000"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="md:hidden w-full h-80 rounded-lg overflow-hidden shadow-lg">
-          <div className="w-full h-full overflow-hidden" ref={emblaMobileRef}>
-            <div className="flex h-full">
-              {slides.map((slide, index) => (
-                <div key={index} className="flex-shrink-0 h-full min-w-[100%]">
-                  <img 
-                    src={slide.image} 
-                    alt={`Appreciatti - Vela Artesanal ${index + 1}`} 
-                    className="w-full h-full object-contain transition-transform duration-2000"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="relative h-full max-h-[80vh] overflow-hidden rounded-lg shadow-xl">
+          <video 
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source 
+              src="https://zipline.zipticket.com.br/submod/download.php?disposition=inline&chave=00.257179.42a6.ce99.af0&nome=1032524872063400.mp4" 
+              type="video/mp4" 
+            />
+            Seu navegador não suporta vídeos HTML5.
+          </video>
         </div>
       </div>
 
