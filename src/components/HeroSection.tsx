@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Flame, Music } from 'lucide-react';
@@ -43,7 +42,7 @@ const HeroSection = () => {
           </span>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight animate-slide-up [animation-delay:500ms]">
-            Transforme momentos cotidianos em <span className="text-muted">rituais de bem-estar</span>
+            Transforme momentos cotidianos em <span className="text-accent">rituais de bem-estar</span>
           </h1>
           
           <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl animate-slide-up [animation-delay:700ms]">
