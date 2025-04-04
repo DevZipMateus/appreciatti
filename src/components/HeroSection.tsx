@@ -43,6 +43,11 @@ const HeroSection = () => {
     window.open('https://open.spotify.com/playlist/7w6jhzdXTowIWjFlUBDUD1?si=2c67a3e734304f0d', '_blank');
   };
 
+  // Fix for TypeScript error by providing the correct type handling
+  const handleSelectSlide = (index: number) => {
+    setActiveSlide(index);
+  };
+
   return (
     <section 
       id="hero" 
@@ -95,7 +100,7 @@ const HeroSection = () => {
         <div className="relative w-full max-w-lg mx-auto lg:mx-0">
           <Carousel 
             className="rounded-xl overflow-hidden shadow-2xl border border-[#eee]/20"
-            onSelect={(index) => setActiveSlide(index)}
+            onSelect={handleSelectSlide}
           >
             <CarouselContent>
               <CarouselItem>
@@ -124,9 +129,36 @@ const HeroSection = () => {
                   />
                 </AspectRatio>
               </CarouselItem>
+              <CarouselItem>
+                <AspectRatio ratio={3/4} className="w-full">
+                  <img 
+                    src="/lovable-uploads/79d512e1-5f3d-447f-9a03-f63a7913c135.png" 
+                    alt="Vela acesa em recipiente escuro" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </CarouselItem>
+              <CarouselItem>
+                <AspectRatio ratio={3/4} className="w-full">
+                  <img 
+                    src="/lovable-uploads/2c165345-9bc3-4afa-b639-59f31f1b0370.png" 
+                    alt="Flor rosa decorativa" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </CarouselItem>
+              <CarouselItem>
+                <AspectRatio ratio={3/4} className="w-full">
+                  <img 
+                    src="/lovable-uploads/6e67e00d-007d-4b8c-b1cf-a435c375f6ab.png" 
+                    alt="Flor rosa em close" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </CarouselItem>
             </CarouselContent>
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-              {[0, 1].map((index) => (
+              {[0, 1, 2, 3, 4].map((index) => (
                 <button 
                   key={index}
                   aria-label={`Ir para slide ${index + 1}`}
