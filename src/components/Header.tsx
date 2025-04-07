@@ -98,21 +98,31 @@ const NavLinks = ({
 
   return <>
       {links.map(link => 
-        <SheetClose key={link.name} asChild>
+        mobile ? (
+          <SheetClose key={link.name} asChild>
+            <a 
+              href={link.href} 
+              className="font-medium transition-all duration-300 rounded-md flex items-center
+                text-xl text-[#eee] hover:text-[#eee]/80 py-3 px-4 w-full hover:bg-primary/20 border-b border-[#eee]/10"
+              onClick={onClick}
+            >
+              {link.name}
+              {mobile && <ChevronRight className="ml-auto h-5 w-5 opacity-70" />}
+            </a>
+          </SheetClose>
+        ) : (
           <a 
+            key={link.name}
             href={link.href} 
             className={`font-medium transition-all duration-300 rounded-md flex items-center
-            ${mobile 
-              ? 'text-xl text-[#eee] hover:text-[#eee]/80 py-3 px-4 w-full hover:bg-primary/20 border-b border-[#eee]/10' 
-              : isScrolled 
+              ${isScrolled 
                 ? 'text-foreground/80 hover:text-primary hover:bg-secondary/50 px-3 py-2' 
                 : 'text-[#eee] hover:text-[#eee]/80 hover:bg-[#eee]/10 px-3 py-2'}`} 
             onClick={onClick}
           >
             {link.name}
-            {mobile && <ChevronRight className="ml-auto h-5 w-5 opacity-70" />}
           </a>
-        </SheetClose>
+        )
       )}
     </>;
 };
