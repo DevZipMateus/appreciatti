@@ -60,10 +60,6 @@ const HeroSection = () => {
     window.open('https://open.spotify.com/playlist/7w6jhzdXTowIWjFlUBDUD1?si=2c67a3e734304f0d', '_blank');
   };
 
-  const handleSelectSlide = (index: number) => {
-    setActiveSlide(index);
-  };
-
   return (
     <section 
       id="hero" 
@@ -148,6 +144,60 @@ const HeroSection = () => {
               <CarouselItem>
                 <AspectRatio ratio={3/4} className="w-full">
                   <img 
+                    src="/lovable-uploads/363b9f9a-655d-4c89-946d-f64dd3eb450b.png" 
+                    alt="Vela Renovo - Alecrim e Limão Siciliano" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </CarouselItem>
+              <CarouselItem>
+                <AspectRatio ratio={3/4} className="w-full">
+                  <img 
+                    src="/lovable-uploads/8dbe36cd-50e2-4b71-90f3-7b3b4a68fcb6.png" 
+                    alt="Velas Orvalho Bamboo" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </CarouselItem>
+              <CarouselItem>
+                <AspectRatio ratio={3/4} className="w-full">
+                  <img 
+                    src="/lovable-uploads/bd861304-734b-48b7-8382-d3e30d44e0ea.png" 
+                    alt="Vela Bosque - Casca e Folhas" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </CarouselItem>
+              <CarouselItem>
+                <AspectRatio ratio={3/4} className="w-full">
+                  <img 
+                    src="/lovable-uploads/3c0dd988-433e-46cc-9ab9-703d3493d7b1.png" 
+                    alt="Vela Harmonia - Capim Limão" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </CarouselItem>
+              <CarouselItem>
+                <AspectRatio ratio={3/4} className="w-full">
+                  <img 
+                    src="/lovable-uploads/986ded6d-b36f-4557-b2ff-c2cba8423f4d.png" 
+                    alt="Vela Ambré - Âmbar" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </CarouselItem>
+              <CarouselItem>
+                <AspectRatio ratio={3/4} className="w-full">
+                  <img 
+                    src="/lovable-uploads/2ca0de87-dd9d-4fd9-8a34-cd7e3291522b.png" 
+                    alt="Vela Leveza - Lavanda Francesa" 
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
+              </CarouselItem>
+              <CarouselItem>
+                <AspectRatio ratio={3/4} className="w-full">
+                  <img 
                     src="/lovable-uploads/79d512e1-5f3d-447f-9a03-f63a7913c135.png" 
                     alt="Vela acesa em recipiente escuro" 
                     className="w-full h-full object-cover"
@@ -174,7 +224,7 @@ const HeroSection = () => {
               </CarouselItem>
             </CarouselContent>
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-              {[0, 1, 2, 3, 4].map((index) => (
+              {Array.from({ length: 11 }).map((_, index) => (
                 <button 
                   key={index}
                   aria-label={`Ir para slide ${index + 1}`}

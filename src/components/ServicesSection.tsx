@@ -34,29 +34,33 @@ const ServicesSection = () => {
     },
     {
       icon: <Heart className="h-12 w-12 text-primary" />,
-      title: "Coleção Afeto 🍰",
-      description: "Aromas aconchegantes que remetem a memórias afetivas e momentos de prazer. Perfeita para quem ama fragrâncias doces e envolventes."
+      title: "Coleção Renovo 🍃",
+      description: "Aromas de Alecrim e Limão Siciliano que renovam as energias e trazem vitalidade ao ambiente. Ideal para momentos de concentração e renovação.",
+      image: "/lovable-uploads/363b9f9a-655d-4c89-946d-f64dd3eb450b.png"
     },
     {
       icon: <Moon className="h-12 w-12 text-primary" />,
-      title: "Coleção Véu da Noite 🌙✨",
-      description: "Uma linha voltada para a espiritualidade e conexão com o universo. Perfeita para rituais, meditação e introspecção."
+      title: "Coleção Orvalho 🌿",
+      description: "Fragrância de Bamboo que traz frescor e acolhimento. Perfeita para criar uma atmosfera de paz e tranquilidade nos ambientes.",
+      image: "/lovable-uploads/8dbe36cd-50e2-4b71-90f3-7b3b4a68fcb6.png"
     },
     {
       icon: <Rainbow className="h-12 w-12 text-primary" />,
-      title: "Coleção Lume 🌈💫",
-      description: "Uma linha que celebra a alegria, a criatividade e a criança interior. Velas coloridas, com aromas vibrantes e frases inspiradoras."
+      title: "Coleção Bosque 🌳",
+      description: "Aromas de Cascas e Folhas que remetem a uma caminhada na floresta. Ideal para conectar-se com a natureza e equilibrar as energias.",
+      image: "/lovable-uploads/bd861304-734b-48b7-8382-d3e30d44e0ea.png"
     },
     {
       icon: <Leaf className="h-12 w-12 text-primary" />,
-      title: "Coleção Florescer 🌿🌸",
-      description: "Como um passeio em um jardim florido. Velas maiores, decoradas com delicadas flores de cera, trazendo frescor e renovação.",
-      image: "/lovable-uploads/3af13b38-e75e-4ef6-9db5-24d6cf254808.png"
+      title: "Coleção Harmonia 🌱",
+      description: "Fragrância de Capim Limão que traz tranquilidade e harmonia. Perfeita para momentos de relaxamento e meditação.",
+      image: "/lovable-uploads/3c0dd988-433e-46cc-9ab9-703d3493d7b1.png"
     },
     {
       icon: <Music className="h-12 w-12 text-primary" />,
-      title: "Experiência Sensorial 🎵",
-      description: "Cada coleção é acompanhada por uma playlist especialmente curada para complementar a experiência aromática e seu bem-estar."
+      title: "Coleção Ambré & Leveza 🌸",
+      description: "Fragrâncias de Âmbar e Lavanda Francesa que trazem sofisticação e leveza. Ideal para criar ambientes acolhedores e relaxantes.",
+      image: "/lovable-uploads/2ca0de87-dd9d-4fd9-8a34-cd7e3291522b.png"
     }
   ];
 
@@ -87,6 +91,21 @@ const ServicesSection = () => {
               image={collection.image}
             />
           ))}
+        </div>
+
+        <div className="mt-16 bg-primary/5 p-8 rounded-xl shadow-md animate-on-scroll">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-2">Galeria de Produtos</h3>
+            <p className="text-muted-foreground">Conheça nossos produtos em detalhes</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <ProductImage src="/lovable-uploads/363b9f9a-655d-4c89-946d-f64dd3eb450b.png" alt="Vela Renovo" title="Renovo" subtitle="Alecrim e Limão Siciliano" />
+            <ProductImage src="/lovable-uploads/8dbe36cd-50e2-4b71-90f3-7b3b4a68fcb6.png" alt="Velas Orvalho" title="Orvalho" subtitle="Bamboo" />
+            <ProductImage src="/lovable-uploads/bd861304-734b-48b7-8382-d3e30d44e0ea.png" alt="Vela Bosque" title="Bosque" subtitle="Cascas e Folhas" />
+            <ProductImage src="/lovable-uploads/3c0dd988-433e-46cc-9ab9-703d3493d7b1.png" alt="Vela Harmonia" title="Harmonia" subtitle="Capim Limão" />
+            <ProductImage src="/lovable-uploads/986ded6d-b36f-4557-b2ff-c2cba8423f4d.png" alt="Vela Ambré" title="Ambré" subtitle="Âmbar" />
+            <ProductImage src="/lovable-uploads/2ca0de87-dd9d-4fd9-8a34-cd7e3291522b.png" alt="Vela Leveza" title="Leveza" subtitle="Lavanda Francesa" />
+          </div>
         </div>
       </div>
     </section>
@@ -120,6 +139,25 @@ const CollectionCard = ({
       <p className="text-muted-foreground">{description}</p>
     </CardContent>
   </Card>
+);
+
+interface ProductImageProps {
+  src: string;
+  alt: string;
+  title: string;
+  subtitle: string;
+}
+
+const ProductImage = ({ src, alt, title, subtitle }: ProductImageProps) => (
+  <div className="relative group overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105">
+    <div className="aspect-square overflow-hidden">
+      <img src={src} alt={alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+    </div>
+    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+      <h4 className="text-white font-bold mb-1">{title}</h4>
+      <p className="text-white/80 text-sm">{subtitle}</p>
+    </div>
+  </div>
 );
 
 export default ServicesSection;
