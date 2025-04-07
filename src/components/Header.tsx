@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 
@@ -37,7 +37,6 @@ const Header = () => {
           {/* Desktop Menu */}
           <nav className="hidden md:flex items-center space-x-1">
             <NavLinks isScrolled={isScrolled} />
-            
           </nav>
 
           {/* Mobile Menu using Sheet from shadcn/ui */}
@@ -49,8 +48,16 @@ const Header = () => {
                   <span className="sr-only">Abrir menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="top" className="pt-16 pb-8 px-6 bg-primary text-[#eee]">
-                <nav className="flex flex-col items-center space-y-4 text-lg">
+              <SheetContent side="right" className="pt-16 pb-8 px-6 bg-gradient-to-r from-primary to-primary/90 text-[#eee] w-[280px] max-w-full">
+                <div className="absolute top-6 right-6">
+                  <SheetClose asChild>
+                    <Button variant="ghost" size="icon" className="text-[#eee] hover:bg-primary/20">
+                      <X size={24} />
+                      <span className="sr-only">Fechar menu</span>
+                    </Button>
+                  </SheetClose>
+                </div>
+                <nav className="flex flex-col space-y-1 text-lg pt-4">
                   <NavLinks mobile isScrolled={false} />
                 </nav>
               </SheetContent>
@@ -90,15 +97,23 @@ const NavLinks = ({
   }];
 
   return <>
-      {links.map(link => <a key={link.name} href={link.href} className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
+      {links.map(link => 
+        <SheetClose key={link.name} asChild>
+          <a 
+            href={link.href} 
+            className={`font-medium transition-all duration-300 rounded-md flex items-center
             ${mobile 
-              ? `text-xl text-[#eee] hover:text-[#eee]/80 mb-2 w-full text-center py-3` 
+              ? 'text-xl text-[#eee] hover:text-[#eee]/80 py-3 px-4 w-full hover:bg-primary/20 border-b border-[#eee]/10' 
               : isScrolled 
-                ? 'text-foreground/80 hover:text-primary hover:bg-secondary/50' 
-                : 'text-[#eee] hover:text-[#eee]/80 hover:bg-[#eee]/10'}`} 
-            onClick={onClick}>
-          {link.name}
-        </a>)}
+                ? 'text-foreground/80 hover:text-primary hover:bg-secondary/50 px-3 py-2' 
+                : 'text-[#eee] hover:text-[#eee]/80 hover:bg-[#eee]/10 px-3 py-2'}`} 
+            onClick={onClick}
+          >
+            {link.name}
+            {mobile && <ChevronRight className="ml-auto h-5 w-5 opacity-70" />}
+          </a>
+        </SheetClose>
+      )}
     </>;
 };
 

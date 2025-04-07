@@ -28,37 +28,43 @@ const ServicesSection = () => {
   const collections = [
     {
       icon: <Sparkles className="h-12 w-12 text-primary" />,
-      title: "Coleção Essência 🕊️",
+      title: "Essência",
+      subtitle: "Pureza e sofisticação",
       description: "A pureza do essencial. Velas com fragrâncias sofisticadas e design minimalista, trazendo equilíbrio e sofisticação ao ambiente.",
       image: "/lovable-uploads/8b3b4d36-32f0-446d-a485-e735f6373954.png"
     },
     {
       icon: <Heart className="h-12 w-12 text-primary" />,
-      title: "Coleção Renovo 🍃",
+      title: "Renovo",
+      subtitle: "Alecrim e Limão Siciliano",
       description: "Aromas de Alecrim e Limão Siciliano que renovam as energias e trazem vitalidade ao ambiente. Ideal para momentos de concentração e renovação.",
       image: "/lovable-uploads/363b9f9a-655d-4c89-946d-f64dd3eb450b.png"
     },
     {
       icon: <Moon className="h-12 w-12 text-primary" />,
-      title: "Coleção Orvalho 🌿",
+      title: "Orvalho",
+      subtitle: "Frescor e acolhimento",
       description: "Fragrância de Bamboo que traz frescor e acolhimento. Perfeita para criar uma atmosfera de paz e tranquilidade nos ambientes.",
       image: "/lovable-uploads/8dbe36cd-50e2-4b71-90f3-7b3b4a68fcb6.png"
     },
     {
       icon: <Rainbow className="h-12 w-12 text-primary" />,
-      title: "Coleção Bosque 🌳",
+      title: "Bosque",
+      subtitle: "Cascas e Folhas",
       description: "Aromas de Cascas e Folhas que remetem a uma caminhada na floresta. Ideal para conectar-se com a natureza e equilibrar as energias.",
       image: "/lovable-uploads/bd861304-734b-48b7-8382-d3e30d44e0ea.png"
     },
     {
       icon: <Leaf className="h-12 w-12 text-primary" />,
-      title: "Coleção Harmonia 🌱",
+      title: "Harmonia",
+      subtitle: "Capim Limão",
       description: "Fragrância de Capim Limão que traz tranquilidade e harmonia. Perfeita para momentos de relaxamento e meditação.",
       image: "/lovable-uploads/3c0dd988-433e-46cc-9ab9-703d3493d7b1.png"
     },
     {
       icon: <Music className="h-12 w-12 text-primary" />,
-      title: "Coleção Ambré & Leveza 🌸",
+      title: "Ambré & Leveza",
+      subtitle: "Âmbar e Lavanda Francesa",
       description: "Fragrâncias de Âmbar e Lavanda Francesa que trazem sofisticação e leveza. Ideal para criar ambientes acolhedores e relaxantes.",
       image: "/lovable-uploads/2ca0de87-dd9d-4fd9-8a34-cd7e3291522b.png"
     }
@@ -86,6 +92,7 @@ const ServicesSection = () => {
               key={index} 
               icon={collection.icon} 
               title={collection.title} 
+              subtitle={collection.subtitle}
               description={collection.description} 
               index={index}
               image={collection.image}
@@ -115,6 +122,7 @@ const ServicesSection = () => {
 interface CollectionCardProps {
   icon: React.ReactNode;
   title: string;
+  subtitle: string;
   description: string;
   index: number;
   image?: string;
@@ -123,6 +131,7 @@ interface CollectionCardProps {
 const CollectionCard = ({
   icon,
   title,
+  subtitle,
   description,
   index,
   image
@@ -135,7 +144,8 @@ const CollectionCard = ({
         </div>
       )}
       <div className="mb-5 p-4 bg-primary/5 rounded-full">{icon}</div>
-      <h3 className="text-xl font-bold mb-3">{title}</h3>
+      <h3 className="text-xl font-bold mb-1">{title}</h3>
+      <p className="text-sm text-primary/70 font-medium mb-3">{subtitle}</p>
       <p className="text-muted-foreground">{description}</p>
     </CardContent>
   </Card>
