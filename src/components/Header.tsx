@@ -1,9 +1,19 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight, ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { 
+  Sheet, 
+  SheetContent, 
+  SheetTrigger, 
+  SheetClose 
+} from "@/components/ui/sheet";
+import { 
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger
+} from "@/components/ui/collapsible";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,7 +68,7 @@ const Header = () => {
                   </SheetClose>
                 </div>
                 <nav className="flex flex-col space-y-1 text-lg pt-4">
-                  <NavLinks mobile isScrolled={false} />
+                  <MobileNavLinks />
                 </nav>
               </SheetContent>
             </Sheet>
@@ -97,34 +107,106 @@ const NavLinks = ({
   }];
 
   return <>
-      {links.map(link => 
-        mobile ? (
-          <SheetClose key={link.name} asChild>
-            <a 
-              href={link.href} 
-              className="font-medium transition-all duration-300 rounded-md flex items-center
-                text-xl text-[#eee] hover:text-[#eee]/80 py-3 px-4 w-full hover:bg-primary/20 border-b border-[#eee]/10"
-              onClick={onClick}
-            >
-              {link.name}
-              {mobile && <ChevronRight className="ml-auto h-5 w-5 opacity-70" />}
-            </a>
-          </SheetClose>
-        ) : (
+      {links.map(link => (
+        <a 
+          key={link.name}
+          href={link.href} 
+          className={`font-medium transition-all duration-300 rounded-md flex items-center
+            ${isScrolled 
+              ? 'text-foreground/80 hover:text-primary hover:bg-secondary/50 px-3 py-2' 
+              : 'text-[#eee] hover:text-[#eee]/80 hover:bg-[#eee]/10 px-3 py-2'}`} 
+          onClick={onClick}
+        >
+          {link.name}
+        </a>
+      ))}
+    </>;
+};
+
+const MobileNavLinks = () => {
+  const [collectionsOpen, setCollectionsOpen] = useState(false);
+  
+  const mainLinks = [
+    { name: 'Início', href: '#hero' },
+    { name: 'Sobre Nós', href: '#about' }
+  ];
+  
+  const collectionsLinks = [
+    { name: 'Essência 🕊️', href: '#services' },
+    { name: 'Afeto 🍰', href: '#services' },
+    { name: 'Véu da Noite 🌙✨', href: '#services' },
+    { name: 'Lume 🌈💫', href: '#services' },
+    { name: 'Florescer 🌿🌸', href: '#services' }
+  ];
+  
+  const otherLinks = [
+    { name: 'Personalização', href: '#plans' },
+    { name: 'Contato', href: '#contact' }
+  ];
+
+  return (
+    <>
+      {mainLinks.map(link => (
+        <SheetClose key={link.name} asChild>
           <a 
-            key={link.name}
             href={link.href} 
-            className={`font-medium transition-all duration-300 rounded-md flex items-center
-              ${isScrolled 
-                ? 'text-foreground/80 hover:text-primary hover:bg-secondary/50 px-3 py-2' 
-                : 'text-[#eee] hover:text-[#eee]/80 hover:bg-[#eee]/10 px-3 py-2'}`} 
-            onClick={onClick}
+            className="font-medium transition-all duration-300 rounded-md flex items-center
+              text-xl text-[#eee] hover:text-[#eee]/80 py-3 px-4 w-full hover:bg-primary/20 border-b border-[#eee]/10"
           >
             {link.name}
+            <ChevronRight className="ml-auto h-5 w-5 opacity-70" />
           </a>
-        )
-      )}
-    </>;
+        </SheetClose>
+      ))}
+      
+      <Collapsible
+        open={collectionsOpen}
+        onOpenChange={setCollectionsOpen}
+        className="border-b border-[#eee]/10"
+      >
+        <CollapsibleTrigger asChild>
+          <button className="font-medium transition-all duration-300 rounded-md flex items-center
+            text-xl text-[#eee] hover:text-[#eee]/80 py-3 px-4 w-full hover:bg-primary/20">
+            Coleções
+            <div className="ml-auto">
+              {collectionsOpen ? (
+                <ChevronDown className="h-5 w-5 opacity-70 rotate-180 transition-transform" />
+              ) : (
+                <ChevronDown className="h-5 w-5 opacity-70 transition-transform" />
+              )}
+            </div>
+          </button>
+        </CollapsibleTrigger>
+        <CollapsibleContent className="pl-4">
+          {collectionsLinks.map(link => (
+            <SheetClose key={link.name} asChild>
+              <a
+                href={link.href}
+                className="font-medium transition-all duration-300 rounded-md flex items-center
+                  text-lg text-[#eee] hover:text-[#eee]/80 py-2 px-4 w-full hover:bg-primary/20"
+              >
+                {link.name}
+                <ChevronRight className="ml-auto h-4 w-4 opacity-70" />
+              </a>
+            </SheetClose>
+          ))}
+        </CollapsibleContent>
+      </Collapsible>
+      
+      {otherLinks.map(link => (
+        <SheetClose key={link.name} asChild>
+          <a 
+            href={link.href} 
+            className="font-medium transition-all duration-300 rounded-md flex items-center
+              text-xl text-[#eee] hover:text-[#eee]/80 py-3 px-4 w-full hover:bg-primary/20 border-b border-[#eee]/10"
+          >
+            {link.name}
+            <ChevronRight className="ml-auto h-5 w-5 opacity-70" />
+          </a>
+        </SheetClose>
+      ))}
+    </>
+  );
 };
 
 export default Header;

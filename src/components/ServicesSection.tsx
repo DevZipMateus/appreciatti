@@ -28,45 +28,53 @@ const ServicesSection = () => {
   const collections = [
     {
       icon: <Sparkles className="h-12 w-12 text-primary" />,
-      title: "Essência",
-      subtitle: "Pureza e sofisticação",
+      title: "Essência 🕊️",
+      subtitle: "Minimalista, elegante e atemporal",
       description: "A pureza do essencial. Velas com fragrâncias sofisticadas e design minimalista, trazendo equilíbrio e sofisticação ao ambiente.",
+      details: "Potes: Pianezza de 90g e 140g, transparentes, com tampa preta.",
+      poetic: "No silêncio, encontra-se a essência. Acenda. Respire. Contemple.",
+      experience: "Playlist relaxante com sons instrumentais e natureza.",
       image: "/lovable-uploads/8b3b4d36-32f0-446d-a485-e735f6373954.png"
     },
     {
       icon: <Heart className="h-12 w-12 text-primary" />,
-      title: "Renovo",
-      subtitle: "Alecrim e Limão Siciliano",
-      description: "Aromas de Alecrim e Limão Siciliano que renovam as energias e trazem vitalidade ao ambiente. Ideal para momentos de concentração e renovação.",
+      title: "Afeto 🍰",
+      subtitle: "Conforto, nostalgia e indulgência",
+      description: "Aromas aconchegantes que remetem a memórias afetivas e momentos de prazer. Perfeita para quem ama fragrâncias doces e envolventes.",
+      details: "Potes: Patê e Whisky, de vidro transparente com tampa de madeira pinus.",
+      poetic: "",
+      experience: "Playlist com músicas nostálgicas e acolhedoras.",
       image: "/lovable-uploads/363b9f9a-655d-4c89-946d-f64dd3eb450b.png"
     },
     {
       icon: <Moon className="h-12 w-12 text-primary" />,
-      title: "Orvalho",
-      subtitle: "Frescor e acolhimento",
-      description: "Fragrância de Bamboo que traz frescor e acolhimento. Perfeita para criar uma atmosfera de paz e tranquilidade nos ambientes.",
+      title: "Véu da Noite 🌙✨",
+      subtitle: "Misticismo, introspecção e encantamento",
+      description: "Uma linha voltada para a espiritualidade e conexão com o universo. Perfeita para rituais, meditação e momentos de introspecção.",
+      details: "Potes: Vidro preto fosco e vidro azul escuro translúcido, com tampa dourada.",
+      poetic: "O universo fala em sussurros. Acenda sua vela e escute a noite.",
+      experience: "Sons cósmicos e de meditação guiada.",
       image: "/lovable-uploads/8dbe36cd-50e2-4b71-90f3-7b3b4a68fcb6.png"
     },
     {
       icon: <Rainbow className="h-12 w-12 text-primary" />,
-      title: "Bosque",
-      subtitle: "Cascas e Folhas",
-      description: "Aromas de Cascas e Folhas que remetem a uma caminhada na floresta. Ideal para conectar-se com a natureza e equilibrar as energias.",
+      title: "Lume 🌈💫",
+      subtitle: "Linha divertida, colorida e vibrante",
+      description: "Uma linha que celebra a alegria, a criatividade e a criança interior. Velas coloridas, com aromas vibrantes e frases inspiradoras que despertam sorrisos e boas vibrações.",
+      details: "Potes: Vidro brilhante e colorido (rosa, azul, amarelo e lilás), com tampas metálicas douradas ou prateadas.",
+      poetic: "A vida é feita de luz e cor. Deixe sua criança interior brincar. Acenda. Sorria. Dance.",
+      experience: "Playlist animada e motivacional.",
       image: "/lovable-uploads/bd861304-734b-48b7-8382-d3e30d44e0ea.png"
     },
     {
       icon: <Leaf className="h-12 w-12 text-primary" />,
-      title: "Harmonia",
-      subtitle: "Capim Limão",
-      description: "Fragrância de Capim Limão que traz tranquilidade e harmonia. Perfeita para momentos de relaxamento e meditação.",
+      title: "Florescer 🌿🌸",
+      subtitle: "Jardins encantados e conexão com a natureza",
+      description: "Como um passeio em um jardim florido. Velas maiores, decoradas com delicadas flores de cera, trazendo frescor, renovação e suavidade ao ambiente.",
+      details: "",
+      poetic: "Cada chama acesa é um novo botão que floresce. Permita-se desabrochar.",
+      experience: "Playlist com sons de natureza e músicas suaves.",
       image: "/lovable-uploads/3c0dd988-433e-46cc-9ab9-703d3493d7b1.png"
-    },
-    {
-      icon: <Music className="h-12 w-12 text-primary" />,
-      title: "Ambré & Leveza",
-      subtitle: "Âmbar e Lavanda Francesa",
-      description: "Fragrâncias de Âmbar e Lavanda Francesa que trazem sofisticação e leveza. Ideal para criar ambientes acolhedores e relaxantes.",
-      image: "/lovable-uploads/2ca0de87-dd9d-4fd9-8a34-cd7e3291522b.png"
     }
   ];
 
@@ -78,11 +86,11 @@ const ServicesSection = () => {
             Nossas Coleções
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
-            Descubra Suas Fragrâncias Favoritas
+            Descubra Suas Coleções Favoritas
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll">
-            Oferecemos uma variedade de velas artesanais, cada uma com sua própria personalidade
-            e propósito para diferentes estados de espírito e momentos.
+            Cada coleção foi cuidadosamente elaborada para oferecer uma experiência sensorial completa,
+            conectando fragrâncias, emoções e momentos especiais.
           </p>
         </div>
 
@@ -93,7 +101,10 @@ const ServicesSection = () => {
               icon={collection.icon} 
               title={collection.title} 
               subtitle={collection.subtitle}
-              description={collection.description} 
+              description={collection.description}
+              details={collection.details}
+              poetic={collection.poetic}
+              experience={collection.experience}
               index={index}
               image={collection.image}
             />
@@ -103,15 +114,15 @@ const ServicesSection = () => {
         <div className="mt-16 bg-primary/5 p-8 rounded-xl shadow-md animate-on-scroll">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-2">Galeria de Produtos</h3>
-            <p className="text-muted-foreground">Conheça nossos produtos em detalhes</p>
+            <p className="text-muted-foreground">Explore nossa variedade de designs e opções</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <ProductImage src="/lovable-uploads/363b9f9a-655d-4c89-946d-f64dd3eb450b.png" alt="Vela Renovo" title="Renovo" subtitle="Alecrim e Limão Siciliano" />
-            <ProductImage src="/lovable-uploads/8dbe36cd-50e2-4b71-90f3-7b3b4a68fcb6.png" alt="Velas Orvalho" title="Orvalho" subtitle="Bamboo" />
-            <ProductImage src="/lovable-uploads/bd861304-734b-48b7-8382-d3e30d44e0ea.png" alt="Vela Bosque" title="Bosque" subtitle="Cascas e Folhas" />
-            <ProductImage src="/lovable-uploads/3c0dd988-433e-46cc-9ab9-703d3493d7b1.png" alt="Vela Harmonia" title="Harmonia" subtitle="Capim Limão" />
-            <ProductImage src="/lovable-uploads/986ded6d-b36f-4557-b2ff-c2cba8423f4d.png" alt="Vela Ambré" title="Ambré" subtitle="Âmbar" />
-            <ProductImage src="/lovable-uploads/2ca0de87-dd9d-4fd9-8a34-cd7e3291522b.png" alt="Vela Leveza" title="Leveza" subtitle="Lavanda Francesa" />
+            <ProductImage src="/lovable-uploads/363b9f9a-655d-4c89-946d-f64dd3eb450b.png" alt="Coleção Afeto" title="Afeto" subtitle="Conforto e nostalgia" />
+            <ProductImage src="/lovable-uploads/8dbe36cd-50e2-4b71-90f3-7b3b4a68fcb6.png" alt="Véu da Noite" title="Véu da Noite" subtitle="Misticismo" />
+            <ProductImage src="/lovable-uploads/bd861304-734b-48b7-8382-d3e30d44e0ea.png" alt="Lume" title="Lume" subtitle="Colorida e vibrante" />
+            <ProductImage src="/lovable-uploads/3c0dd988-433e-46cc-9ab9-703d3493d7b1.png" alt="Florescer" title="Florescer" subtitle="Jardins encantados" />
+            <ProductImage src="/lovable-uploads/986ded6d-b36f-4557-b2ff-c2cba8423f4d.png" alt="Essência" title="Essência" subtitle="Minimalista" />
+            <ProductImage src="/lovable-uploads/2ca0de87-dd9d-4fd9-8a34-cd7e3291522b.png" alt="Variação" title="Variações" subtitle="Diferentes formatos" />
           </div>
         </div>
       </div>
@@ -124,6 +135,9 @@ interface CollectionCardProps {
   title: string;
   subtitle: string;
   description: string;
+  details?: string;
+  poetic?: string;
+  experience?: string;
   index: number;
   image?: string;
 }
@@ -133,6 +147,9 @@ const CollectionCard = ({
   title,
   subtitle,
   description,
+  details,
+  poetic,
+  experience,
   index,
   image
 }: CollectionCardProps) => (
@@ -146,7 +163,22 @@ const CollectionCard = ({
       <div className="mb-5 p-4 bg-primary/5 rounded-full">{icon}</div>
       <h3 className="text-xl font-bold mb-1">{title}</h3>
       <p className="text-sm text-primary/70 font-medium mb-3">{subtitle}</p>
-      <p className="text-muted-foreground">{description}</p>
+      <p className="text-muted-foreground mb-3">{description}</p>
+      
+      {details && <p className="text-sm text-gray-600 mb-2">{details}</p>}
+      
+      {poetic && (
+        <div className="italic text-sm text-gray-600 border-l-2 border-primary/30 pl-3 mt-2 mb-3">
+          "{poetic}"
+        </div>
+      )}
+      
+      {experience && (
+        <div className="flex items-center text-xs text-gray-500 mt-2">
+          <Music className="h-3 w-3 mr-1" />
+          <span>{experience}</span>
+        </div>
+      )}
     </CardContent>
   </Card>
 );
