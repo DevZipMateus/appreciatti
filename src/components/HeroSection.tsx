@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Music } from 'lucide-react';
@@ -69,7 +70,7 @@ const HeroSection = () => {
       ref={sectionRef} 
       className="relative min-h-screen flex items-center pt-16"
       style={{
-        background: 'linear-gradient(to bottom, #2c3f67 0%, #4a6491 50%, #ffffff 100%)',
+        background: 'linear-gradient(to right, #2c3f67 0%, #4a6491 50%, #ffffff 100%)',
         boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.2)'
       }}
     >
